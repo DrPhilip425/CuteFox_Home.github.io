@@ -3,9 +3,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Archives | Hexo</title>
+        <title>Archives | Alita</title>
         <meta name="author" content="John Doe" />
-        <meta name="description" content="" />
+        <meta name="description" content="nothing" />
         <meta name="keywords" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="/CuteFox_Home.github.io/images/favicon.png" />
@@ -36,6 +36,14 @@
 <link rel="stylesheet" href="/CuteFox_Home.github.io/css/main.css" />
 
     <meta name="generator" content="Hexo 6.3.0"></head>
+         <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+        <script src="/js/background.min.js"></script>
+        <div id="cursor"></div>
+        <link rel="stylesheet" href="/css/cursor.min.css">
+        <script src="/js/cursor.min.js"></script>
     <body>
         <div id="layout">
             <transition name="fade">
@@ -50,7 +58,7 @@
             <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/CuteFox_Home.github.io/">
-            <span>HEXO</span>
+            <span>ALITA</span>
         </a>
         
         <a href="/CuteFox_Home.github.io/">
@@ -82,7 +90,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;HEXO</span>
+            <span>&emsp;ALITA</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -178,7 +186,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #ff7d73">仅适用于Windows</a>
+                            <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #00bcd4">仅适用于Windows</a>
                         </span>
                         
                     </span>
@@ -194,7 +202,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 Hexo
+            2022 - 2023 Alita
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
