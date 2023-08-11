@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
         <title>Hello World | Alita</title>
         <meta name="author" content="DrPhilip425" />
         <meta name="description" content="The website is my first static blog,thanks for browsing." />
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="Java" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="/CuteFox_Home.github.io/images/favicon.png" />
         <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
@@ -220,5 +220,19 @@
 
 
         
+        <canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css" />
+<script src="/js/cursor.min.js"></script>
     </body>
 </html>
