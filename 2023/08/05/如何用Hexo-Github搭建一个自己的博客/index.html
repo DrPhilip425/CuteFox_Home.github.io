@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>如何用Hexo+Github搭建一个自己的博客 | Alita</title>
+        <title>用Hexo+Github搭建一个自己的博客 | Alita</title>
         <meta name="author" content="DrPhilip425" />
         <meta name="description" content="The website is my first static blog,thanks for browsing." />
         <meta name="keywords" content="Java" />
@@ -147,7 +147,7 @@
             <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
                 <div class="article">
     <div>
-        <h1>如何用Hexo+Github搭建一个自己的博客</h1>
+        <h1>用Hexo+Github搭建一个自己的博客</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -155,6 +155,15 @@
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/8/5
+        </span>
+        
+        <span class="category">
+            <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                教程
+            </a>
         </span>
         
         
@@ -166,7 +175,12 @@
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #00a596">仅适用于Windows</a>
+                <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #03a9f4">仅适用于Windows</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #00a596">Hexo</a>
             </span>
             
         </span>
@@ -174,18 +188,24 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="标题一"><a href="#标题一" class="headerlink" title="标题一"></a>标题一</h1><h2 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h2><h3 id="标题三"><a href="#标题三" class="headerlink" title="标题三"></a>标题三</h3><h4 id="标题四"><a href="#标题四" class="headerlink" title="标题四"></a>标题四</h4><h5 id="标题五"><a href="#标题五" class="headerlink" title="标题五"></a>标题五</h5><p><em>这是斜体</em></p>
+        <h1 id="1-准备搭建环境"><a href="#1-准备搭建环境" class="headerlink" title="1.准备搭建环境"></a>1.准备搭建环境</h1><p>(1)安装适用于Windows系统的Git<br>    <a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>(2)安装适用于Windows系统的NodeJs环境<br>    <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">https://nodejs.org/zh-cn/download</a></p>
+<h1 id="2-获取SSH公钥"><a href="#2-获取SSH公钥" class="headerlink" title="2.获取SSH公钥"></a>2.获取SSH公钥</h1><p>(1)创建github账号<br>    <a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a><br>(2)获取本地密钥</p>
+<p>(3)将SSH公钥绑定gitHub</p>
+<h1 id="3-创建网页"><a href="#3-创建网页" class="headerlink" title="3.创建网页"></a>3.创建网页</h1><p>(1)Windows使用PowerShell<br>(2)安装配置<br>   <code>npm install -g hexo-cli</code><br>(3)绕过执行策略的限制<br>   <code>powershell -ExecutionPolicy Bypass</code><br>(4)创建文件夹package(package为文件夹名可修改)<br>    <code> hexo init package</code><br>(5)进入文件夹package<br>    <code>cd package</code><br>(6)再次安装<br>    <code>npm install</code></p>
+<h1 id="4-部署服务器"><a href="#4-部署服务器" class="headerlink" title="4.部署服务器"></a>4.部署服务器</h1><p>(1)再次绕过执行策略的限制<br>    <code>powershell -ExecutionPolicy Bypass</code><br>(2)生成静态文件<br>    <code>hexo g</code><br>(3)运行本地服务器<br>    <code>hexo s</code></p>
+<h1 id="5-部署网站"><a href="#5-部署网站" class="headerlink" title="5.部署网站"></a>5.部署网站</h1><p>(1)新建一篇文章title(title可修改成想要的标题)<br>    <code>hexo new &quot;title&quot;</code><br>(2)保存在本地<br>    <code>npm install hexo-deployer-git --save</code><br>(3)检查<br>    <code>npm list hexo-deployer-git</code><br>(4)再次绕过执行策略的限制<br>    <code>powershell -ExecutionPolicy Bypass</code><br>(5)部署网站<br>    <code>hexo d</code></p>
+<blockquote>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+</blockquote>
+<p><em>这是斜体</em></p>
 <p><del>这是横线</del></p>
 <ul>
 <li>无序列表</li>
 <li>无序列表</li>
 </ul>
-<p><code>内嵌代码</code></p>
-<pre><code>代码块
+<pre><code>#这是代码块
+#多行代码可写入
 </code></pre>
-<blockquote>
-<p>引用</p>
-</blockquote>
 
     </div>
     
@@ -232,7 +252,7 @@
 
 
         
-        <canvas
+<canvas
     id="fireworks"
     style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
 ></canvas>
