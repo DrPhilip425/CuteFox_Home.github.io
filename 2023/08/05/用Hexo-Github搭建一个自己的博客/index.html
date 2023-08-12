@@ -175,12 +175,12 @@
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #ffa2c4">仅适用于Windows</a>
+                <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #00bcd4">仅适用于Windows</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #00a596">Hexo</a>
+                <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #ffa2c4">Hexo</a>
             </span>
             
         </span>
@@ -192,29 +192,29 @@
 <p>(2)安装适用于Windows系统的NodeJs环境(建议使用 Node.js 12.0 及以上版本)<br>    <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">https://nodejs.org/zh-cn/download</a><br>    若无法下载，则下载并安装淘宝镜像版的NodeJs<br>    <a target="_blank" rel="noopener" href="https://registry.npmmirror.com/binary.html?path=node/">https://registry.npmmirror.com/binary.html?path=node/</a></p>
 <p>(3)安装适用于Windows系统的VSCode编译器<br>    <a target="_blank" rel="noopener" href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a></p>
 <h5 id="注1：若安装淘宝镜像版nodejs，则输入命令时需用cnpm而非npm"><a href="#注1：若安装淘宝镜像版nodejs，则输入命令时需用cnpm而非npm" class="headerlink" title="注1：若安装淘宝镜像版nodejs，则输入命令时需用cnpm而非npm"></a><em>注1：若安装淘宝镜像版nodejs，则输入命令时需用cnpm而非<del>npm</del></em></h5><h5 id="注2：在Windows自带的PowerShell里输入node-v和git-version查看NodeJs和Git是否安装成功"><a href="#注2：在Windows自带的PowerShell里输入node-v和git-version查看NodeJs和Git是否安装成功" class="headerlink" title="注2：在Windows自带的PowerShell里输入node -v和git version查看NodeJs和Git是否安装成功"></a><em>注2：在Windows自带的PowerShell里输入<code>node -v</code>和<code>git version</code>查看NodeJs和Git是否安装成功</em></h5><h1 id="2-获取SSH公钥"><a href="#2-获取SSH公钥" class="headerlink" title="2.获取SSH公钥"></a>2.获取SSH公钥</h1><p>(1)创建github账号<br>    <a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
-<p>(2)获取本地密钥<br>    首先打开<em>Git Bash</em>，输入<code>cd ~/.ssh</code>，再输入<code>ls</code>，检查是否有<em>id_<em>开头的名字，如果没有则可以创建SSH密钥<br>    继续使用</em>Git Bash</em>输入<code>ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;</code><br>    一般不设置密码，就一直回车(<em>enter</em>)直到出现有图案出现<br>    然后再次输入<code>ls</code>，复制有以<em>id_<em>开头</em>pub</em>结尾的名字，输入<code>cat id_...pub</code>，将得到的SSH公钥内容复制下来</p>
-<p>(3)将SSH公钥绑定gitHub<br>    进入github个人页面，点击右上角的头像，在弹出界面找到设置一栏，点击设置再找到<em>SHH and GPG keys</em><br>    点击<em>SHH and GPG keys</em>，将复制的SSH公钥内容填进下面方框中，再设置公钥名字并保存</p>
-<h5 id="注1：-x79-111-x75-x72-x5f-101-109-97-x69-108-64-x65-120-97-109-112-x6c-101-x2e-99-111-x6d-替换为自己注册github账号所使用的邮箱"><a href="#注1：-x79-111-x75-x72-x5f-101-109-97-x69-108-64-x65-120-97-109-112-x6c-101-x2e-99-111-x6d-替换为自己注册github账号所使用的邮箱" class="headerlink" title="注1：&#x79;&#111;&#x75;&#x72;&#x5f;&#101;&#109;&#97;&#x69;&#108;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;替换为自己注册github账号所使用的邮箱"></a><em>注1：<a href="mailto:&#x79;&#111;&#x75;&#x72;&#x5f;&#101;&#109;&#97;&#x69;&#108;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;">&#x79;&#111;&#x75;&#x72;&#x5f;&#101;&#109;&#97;&#x69;&#108;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;</a>替换为自己注册github账号所使用的邮箱</em></h5><h5 id="注2：id-…pub替换为自己复制的名字"><a href="#注2：id-…pub替换为自己复制的名字" class="headerlink" title="注2：id_…pub替换为自己复制的名字"></a><em>注2：id_…pub替换为自己复制的名字</em></h5><h1 id="3-安装Hexo"><a href="#3-安装Hexo" class="headerlink" title="3.安装Hexo"></a>3.安装Hexo</h1><p>(1)安装<em>Hexo-CLI</em><br>    打开<em>PowerShell</em>输入<code>npm install -g hexo-cli</code></p>
-<p>(2)绕过执行策略的限制<br>    在<em>PowerShell</em>中输入<code>powershell -ExecutionPolicy Bypass</code></p>
-<p>(3)安装Hexo包并创建文件夹<em>package</em>(<em>package</em>为文件夹名可修改)<br>    在<em>PowerShell</em>中输入<code>hexo init package</code></p>
-<p>(4)进入文件夹<em>package</em><br>    在<em>PowerShell</em>中输入<code>cd package</code></p>
-<p>(5)再次安装一遍，确保所有的包都安装完成<br>    在<em>PowerShell</em>中输入<code>npm install</code></p>
-<h1 id="4-创建网站页面并运行服务器"><a href="#4-创建网站页面并运行服务器" class="headerlink" title="4.创建网站页面并运行服务器"></a>4.创建网站页面并运行服务器</h1><p>(1)绕过执行策略的限制<br>    在<em>PowerShell</em>中输入<code>powershell -ExecutionPolicy Bypass</code></p>
-<p>(2)生成静态网页文件<br>    在<em>PowerShell</em>中输入<code>hexo g</code></p>
-<p>(3)运行本地服务器<br>    在<em>PowerShell</em>中输入<code>hexo s</code><br>    在返回信息中我们可以得到 <a target="_blank" rel="noopener" href="https://localhost:4000/">https://localhost:4000</a> 这个端口，输入这个端口链接在浏览器中就能看到网页了</p>
-<h1 id="5-写作"><a href="#5-写作" class="headerlink" title="5.写作"></a>5.写作</h1><p>(1)新建一篇文章<em>title</em>(<em>title</em>为标题可修改)<br>    在<em>PowerShell</em>中输入<code>hexo new &quot;title&quot;</code></p>
-<p>(2)再次生成静态网页文件<br>    在<em>PowerShell</em>中输入<code>hexo g</code></p>
-<p>(3)再次运行本地服务器<br>    在<em>PowerShell</em>中输入<code>hexo s</code></p>
-<h1 id="6-部署网页在github上"><a href="#6-部署网页在github上" class="headerlink" title="6.部署网页在github上"></a>6.部署网页在github上</h1><p>(1)在github上创建新的仓库<br>    点击github右上角的*加号(+)*，选择新建存储库，然后输入自己的项目名字，且在名字后面一定要加上<br>    <em>.github.io</em>后缀，还有README初始化也要勾上，最后点击创建即可</p>
-<p>(2)获取SSH链接<br>    点击刚刚创建的库上的<em>code</em>，选择<em>SSH</em>，复制<em>SSH</em>下面的内容</p>
-<p>(3)安装插件在本地<br>    在<em>PowerShell</em>中输入<code>npm install hexo-deployer-git --save</code></p>
-<p>(4)检查插件是否安装成功<br>    在<em>PowerShell</em>中输入<code>npm list hexo-deployer-git</code></p>
-<p>(5)配置*_config.yml<em>文件<br>    进入</em>package<em>文件夹，找到</em>_config.yml<em>文件，选中它用VSCode打开，往下翻并找到<br>    <em>deploy:<em>和</em>type:<em>，在</em>type:<em>后面写上</em>git</em>，并换行写上</em>repo:<em>，再在</em>repo:*后面<br>    粘贴上复制好的SSH链接并保存</p>
-<p>(6)绕过执行策略的限制<br>    在<em>PowerShell</em>中输入<code>powershell -ExecutionPolicy Bypass</code></p>
-<p>(7)将生成的网站部署到github仓库中<br>    在<em>PowerShell</em>中输入<code>hexo d</code></p>
-<p>(8)改变部署仓库分支<br>    打开*_config.yml<em>文件，在</em>repo:<em>下面写上</em>branch:<em>，在</em>branch:*后面写上想要的分支的名字并保存</p>
-<p>(9)再次部署更新内容到github仓库中<br>    在<em>PowerShell</em>中输入<code>hexo d</code></p>
-<p>(10)用github页面打开网站<br>    在gitHub项目仓库页面的搜索栏下面有一个设置，点击设置并其在左下方找到<em>页面</em>一栏，点击页面就能看到<br>    有<em>github.io</em>域名的链接，点击链接即可访问我们创建的网站</p>
+<p>(2)获取本地密钥<br>    首先打开 <em>Git Bash</em> ，输入<code>cd ~/.ssh</code>，再输入<code>ls</code>，检查是否有 <em>id_</em> 开头的名字，如果没有则可以创建SSH密钥<br>    继续使用 <em>Git Bash</em> 输入<code>ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;</code><br>    一般不设置密码，就一直回车 (<em>enter</em>) 直到出现有图案出现<br>    然后再次输入<code>ls</code>，复制有以 <em>id_</em> 开头 <em>pub</em> 结尾的名字，输入<code>cat id_...pub</code>，将得到的SSH公钥内容复制下来</p>
+<p>(3)将SSH公钥绑定gitHub<br>    进入github个人页面，点击右上角的头像，在弹出界面找到设置一栏，点击设置再找到 <em>SHH and GPG keys</em><br>    点击 <em>SHH and GPG keys</em> ，将复制的SSH公钥内容填进下面方框中，再设置公钥名字并保存</p>
+<h5 id="注1：-121-x6f-x75-x72-x5f-x65-109-97-x69-108-x40-101-120-x61-109-112-x6c-101-46-x63-111-109-替换为自己注册github账号所使用的邮箱"><a href="#注1：-121-x6f-x75-x72-x5f-x65-109-97-x69-108-x40-101-120-x61-109-112-x6c-101-46-x63-111-109-替换为自己注册github账号所使用的邮箱" class="headerlink" title="注1：&#121;&#x6f;&#x75;&#x72;&#x5f;&#x65;&#109;&#97;&#x69;&#108;&#x40;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#111;&#109;替换为自己注册github账号所使用的邮箱"></a><em>注1：<a href="mailto:&#121;&#x6f;&#x75;&#x72;&#x5f;&#x65;&#109;&#97;&#x69;&#108;&#x40;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#111;&#109;">&#121;&#x6f;&#x75;&#x72;&#x5f;&#x65;&#109;&#97;&#x69;&#108;&#x40;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#111;&#109;</a>替换为自己注册github账号所使用的邮箱</em></h5><h5 id="注2：id-…pub替换为自己复制的名字"><a href="#注2：id-…pub替换为自己复制的名字" class="headerlink" title="注2：id_…pub替换为自己复制的名字"></a><em>注2：id_…pub替换为自己复制的名字</em></h5><h1 id="3-安装Hexo"><a href="#3-安装Hexo" class="headerlink" title="3.安装Hexo"></a>3.安装Hexo</h1><p>(1)安装 <em>Hexo-CLI</em><br>    打开 <em>PowerShell</em> 输入<code>npm install -g hexo-cli</code></p>
+<p>(2)绕过执行策略的限制<br>    在 <em>PowerShell</em> 中输入<code>powershell -ExecutionPolicy Bypass</code></p>
+<p>(3)安装Hexo包并创建文件夹 <em>package</em> ( <em>package</em> 为文件夹名可修改)<br>    在 <em>PowerShell</em> 中输入<code>hexo init package</code></p>
+<p>(4)进入文件夹 <em>package</em><br>    在 PowerShell* 中输入<code>cd package</code></p>
+<p>(5)再次安装一遍，确保所有的包都安装完成<br>    在 <em>PowerShell</em> 中输入<code>npm install</code></p>
+<h1 id="4-创建网站页面并运行服务器"><a href="#4-创建网站页面并运行服务器" class="headerlink" title="4.创建网站页面并运行服务器"></a>4.创建网站页面并运行服务器</h1><p>(1)绕过执行策略的限制<br>    在 <em>PowerShell</em> 中输入<code>powershell -ExecutionPolicy Bypass</code></p>
+<p>(2)生成静态网页文件<br>    在 <em>PowerShell</em> 中输入<code>hexo g</code></p>
+<p>(3)运行本地服务器<br>    在 <em>PowerShell</em> 中输入<code>hexo s</code><br>    在返回信息中我们可以得到 <a target="_blank" rel="noopener" href="https://localhost:4000/">https://localhost:4000</a> 这个端口，输入这个端口链接在浏览器中就能看到网页了</p>
+<h1 id="5-写作"><a href="#5-写作" class="headerlink" title="5.写作"></a>5.写作</h1><p>(1)新建一篇文章 <em>title</em> ( <em>title</em> 为标题可修改)<br>    在 <em>PowerShell</em> 中输入<code>hexo new &quot;title&quot;</code></p>
+<p>(2)再次生成静态网页文件<br>    在 <em>PowerShell</em> 中输入<code>hexo g</code></p>
+<p>(3)再次运行本地服务器<br>    在 <em>PowerShell</em> 中输入<code>hexo s</code></p>
+<h1 id="6-部署网页在github上"><a href="#6-部署网页在github上" class="headerlink" title="6.部署网页在github上"></a>6.部署网页在github上</h1><p>(1)在github上创建新的仓库<br>    点击github右上角的 <em>加号(+)</em> ，选择新建存储库，然后输入自己的项目名字，且在名字后面一定要加上<br>    <em>.github.io</em> 后缀，还有README初始化也要勾上，最后点击创建即可</p>
+<p>(2)获取SSH链接<br>    点击刚刚创建的库上的 <em>code</em> ，选择 <em>SSH</em> ，复制 <em>SSH</em> 下面的内容</p>
+<p>(3)安装插件在本地<br>    在 <em>PowerShell</em> 中输入<code>npm install hexo-deployer-git --save</code></p>
+<p>(4)检查插件是否安装成功<br>    在 <em>PowerShell</em> 中输入<code>npm list hexo-deployer-git</code></p>
+<p>(5)配置 <em>_config.yml</em> 文件<br>    进入 <em>package</em> 文件夹，找到 <em>_config.yml</em> 件，选中它用VSCode打开，往下翻并找到<br>     <em>deploy:</em> 和 <em>type:</em> ，在 <em>type:</em> 后面写上 <em>git</em> ，并换行写上 <em>repo:</em> ，再在 <em>repo:</em> 后面<br>    粘贴上复制好的SSH链接并保存</p>
+<p>(6)绕过执行策略的限制<br>    在 <em>PowerShell</em> 中输入<code>powershell -ExecutionPolicy Bypass</code></p>
+<p>(7)将生成的网站部署到github仓库中<br>    在 <em>PowerShell</em> 中输入<code>hexo d</code></p>
+<p>(8)改变部署仓库分支<br>    打开 <em>_config.yml</em> 文件，在 <em>repo:</em> 下面写上 <em>branch:</em> ，在 <em>branch:</em> 后面写上想要的分支的名字并保存</p>
+<p>(9)再次部署更新内容到github仓库中<br>    在 <em>PowerShell</em> 中输入<code>hexo d</code></p>
+<p>(10)用github页面打开网站<br>    在gitHub项目仓库页面的搜索栏下面有一个设置，点击设置并其在左下方找到 <em>页面</em> 一栏，点击页面就能看到<br>    有 <em>github.io</em> 域名的链接，点击链接即可访问我们创建的网站</p>
 <h5 id="注：如果输入hexo-d-遇到错误，则在输入其之前输入git-config-global-credential-helper-wincred"><a href="#注：如果输入hexo-d-遇到错误，则在输入其之前输入git-config-global-credential-helper-wincred" class="headerlink" title="注：如果输入hexo d 遇到错误，则在输入其之前输入git config --global credential.helper wincred"></a><em>注：如果输入<code>hexo d </code>遇到错误，则在输入其之前输入<code>git config --global credential.helper wincred</code></em></h5><blockquote>
 <p>参考资料： <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a><br>                    <a target="_blank" rel="noopener" href="https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a></p>
 </blockquote>
