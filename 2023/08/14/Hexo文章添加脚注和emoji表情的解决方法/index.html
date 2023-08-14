@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>Categories: 教程 | Alita</title>
+        <title>Hexo文章添加脚注和emoji表情的解决方法 | Alita</title>
         <meta name="author" content="DrPhilip425" />
         <meta name="description" content="The website is my first static blog,thanks for browsing." />
         <meta name="keywords" content="Java" />
@@ -28,6 +28,10 @@
 
 
 <script src="/CuteFox_Home.github.io/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -143,14 +147,20 @@
 </transition>
 
             <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-                <div id="archives">
-    
-    <div class="categories-tags">
+                <div class="article">
+    <div>
+        <h1>Hexo文章添加脚注和emoji表情的解决方法</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/14
+        </span>
         
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+        <span class="category">
+            <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -159,148 +169,83 @@
         </span>
         
         
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/%E7%97%9B%E7%82%B9/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                痛点
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #ffa2c4">Hexo</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/CuteFox_Home.github.io/tags/%E8%84%9A%E6%B3%A8/" style="color: #00bcd4">脚注</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/CuteFox_Home.github.io/tags/emoji%E8%A1%A8%E6%83%85/" style="color: #ff7d73">emoji表情</a>
+            </span>
+            
         </span>
         
-        
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/8/14</div>
-            <a href="/CuteFox_Home.github.io/2023/08/14/Hexo%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E8%84%9A%E6%B3%A8%E5%92%8Cemoji%E8%A1%A8%E6%83%85%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-                <h3>Hexo文章添加脚注和emoji表情的解决方法</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        教程
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #00bcd4">Hexo</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/%E8%84%9A%E6%B3%A8/" style="color: #03a9f4">脚注</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/emoji%E8%A1%A8%E6%83%85/" style="color: #ffa2c4">emoji表情</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h1>1.脚注</h1>
+<h2 id="1-1用npm安装markdown-it-footnote插件">1.1用npm安装markdown-it-footnote插件</h2>
+<p>打开命令终端(cmd,PowerShell,Git bash等)，输入</p>
+<pre><code class="language-bash">$ npm install markdown-it-footnote --save
+</code></pre>
+<h2 id="1-2安装bower插件">1.2安装bower插件</h2>
+<pre><code class="language-bash">$ npm install -g bower
+</code></pre>
+<h2 id="1-3用bower再次安装markdown-it-footnote插件">1.3用bower再次安装markdown-it-footnote插件</h2>
+<pre><code class="language-bash">$ bower install markdown-it-footnote --save
+</code></pre>
+<h2 id="1-4卸载hexo默认的渲染引擎">1.4卸载hexo默认的渲染引擎</h2>
+<pre><code class="language-bash">$ npm un hexo-renderer-marked --save
+</code></pre>
+<h2 id="1-5替换其渲染引擎为hexo-renderer-markdown-it">1.5替换其渲染引擎为hexo-renderer-markdown-it</h2>
+<pre><code class="language-bash">$ npm i hexo-renderer-markdown-it --save
+</code></pre>
+<h2 id="1-6配置并启用markdown-it-footnote插件">1.6配置并启用markdown-it-footnote插件</h2>
+<p>打开在hexo网站文件根目录下的 <em>_config.yml</em> 文件，在里面手动添加</p>
+<pre><code class="language-yml">markdown:
+  plugins:
+    - markdown-it-footnote
+</code></pre>
+<h1>2.emoji表情</h1>
+<h2 id="2-1安装hexo-filter-emoji插件">2.1安装hexo-filter-emoji插件</h2>
+<p>打开命令终端(cmd,PowerShell,Git bash等)，输入</p>
+<pre><code class="language-bash">$ npm install hexo-filter-emoji
+</code></pre>
+<h2 id="2-2配置并启用hexo-filter-emoji插件">2.2配置并启用hexo-filter-emoji插件</h2>
+<p>打开在hexo网站文件根目录下的 <em>_config.yml</em> 文件，在里面手动添加</p>
+<pre><code class="language-yml"># hexo-filter-emoji
+emoji:
+  enable: true
+  className: github-emoji
+  styles:
+  customEmojis:
+</code></pre>
+<h2 id="2-3emoji表情使用方法">2.3emoji表情使用方法</h2>
+<p>打开<a target="_blank" rel="noopener" href="https://www.webfx.com/tools/emoji-cheat-sheet/">Emoji Cheat Sheet</a>网站，选择自己想要的<em>emoji表情</em>，单击即可复制😋</p>
+<blockquote>
+<p>脚注参考：<a target="_blank" rel="noopener" href="https://stydxm.com/2022/09/23/hexo-footnote/">https://stydxm.com/2022/09/23/hexo-footnote/</a><br>
+emoji表情参考：<a target="_blank" rel="noopener" href="https://lamirs.vercel.app/hexo-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8emoji/">https://lamirs.vercel.app/hexo-配置使用emoji/</a></p>
+</blockquote>
+<center><font color="FF3E96">希</font><font color="FF69B4">望</font><font color="FF7F00">这</font><font color="FF82AB">篇</font><font color="FFA07A">文</font><font color="FFB5C5">章</font><font color="FFBBFF">对</font><font color="FFC125">你</font><font color="FFA54F">有</font><font color="FF8C00">帮</font><font color="FF6347">助</font> 🥰</center>
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/8/12</div>
-            <a href="/CuteFox_Home.github.io/2023/08/12/%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85Linux%E7%B3%BB%E7%BB%9F/">
-                <h3>用虚拟机软件安装Linux系统</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        教程
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #ffa2c4">仅适用于Windows</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/VMware/" style="color: #00a596">VMware</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/8/5</div>
-            <a href="/CuteFox_Home.github.io/2023/08/05/%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">
-                <h3>用Hexo+Github搭建一个自己的博客</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        教程
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #00a596">仅适用于Windows</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #03a9f4">Hexo</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
+    
+    
+    
+    
     
 </div>
 
@@ -332,6 +277,12 @@
             
         </div>
         <script src="/CuteFox_Home.github.io/js/main.js"></script>
+        
+        
+
+
+
+
         
 <canvas
     id="fireworks"

@@ -177,12 +177,12 @@
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #03a9f4">仅适用于Windows</a>
+                <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #00a596">仅适用于Windows</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/VMware/" style="color: #00a596">VMware</a>
+                <a href="/CuteFox_Home.github.io/tags/VMware/" style="color: #ff7d73">VMware</a>
             </span>
             
         </span>
@@ -200,13 +200,13 @@
 <a target="_blank" rel="noopener" href="https://www.debian.org/distrib/">Debian</a></p>
 <hr>
 <h1>2.安装VMware workstation player软件</h1>
-<p>这里下载的是个人免费版 <a target="_blank" rel="noopener" href="https://www.vmware.com/cn/products/workstation-player.html">https://www.vmware.com/cn/products/workstation-player.html</a></p>
+<p>这里下载的是个人免费版<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> <a target="_blank" rel="noopener" href="https://www.vmware.com/cn/products/workstation-player.html">https://www.vmware.com/cn/products/workstation-player.html</a></p>
 <hr>
 <h1>3.开启虚拟化技术</h1>
 <h2 id="3-1检查是否开启CPU虚拟化">3.1检查是否开启CPU虚拟化</h2>
 <p>同时按住键盘上<em>ESC+SHIFT+CTRL</em>打开任务管理器，选择<em>性能</em>，再找到<em>CPU</em>，在<em>CPU</em>界面下找到虚拟化，查看是否启用。若未启用，则需开启CPU虚拟化。</p>
 <h2 id="3-2开启CPU虚拟化">3.2开启CPU虚拟化</h2>
-<p>在电脑开机时，长按<em>F1、F2、F8或F11</em><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>进入电脑主板<em>Bios</em>，在<em>Bios</em>中找到高级选项，再往下移至<em>Inter Virtual Technol</em>，按回车键<em>ENTER</em>，选择<em>Enable</em>；继续再高级选项下找<em>VT-d</em>，再按回车键<em>ENTER</em>，选择<em>Enable</em>；最后保存并退出，开机。</p>
+<p>在电脑开机时，长按<em>F1、F2、F8或F11</em><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>进入电脑主板<em>Bios</em>，在<em>Bios</em>中找到高级选项，再往下移至<em>Inter Virtual Technol</em>，按回车键<em>ENTER</em>，选择<em>Enable</em>；继续再高级选项下找<em>VT-d</em>，再按回车键<em>ENTER</em>，选择<em>Enable</em>；最后保存并退出，开机。</p>
 <h2 id="3-3开启虚拟机平台">3.3开启虚拟机平台</h2>
 <p>同时按下<em>WIN+R</em>键打开运行窗口，输入<em>OptionalFeatures</em>，打开windows功能,勾选<em>Windows虚拟机监控程序平台</em>和<em>虚拟机平台</em>，最后重启电脑。</p>
 <hr>
@@ -217,7 +217,7 @@
 <h2 id="5-1查看虚拟机IP地址">5.1查看虚拟机IP地址</h2>
 <p>打开装有Linux系统虚拟机的<em>终端</em>，输入命令<code>ifconfig</code>，在<em>ens33</em>那块找到<em>inet</em>，<em>inet</em>后面的一串数字即为该虚拟机的<em>IPv4地址</em>。</p>
 <h2 id="5-2">5.2</h2>
-<p>在Windows系统同时按住<em>Win+R</em>键输入<em>cmd</em>打开<em>cmd终端</em>，在<em>cmd终端</em>中输入<code>ping 192.168...</code><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>且保证<em>cmd终端</em>中未显示有<em>数据包</em>丢失。</p>
+<p>在Windows系统同时按住<em>Win+R</em>键输入<em>cmd</em>打开<em>cmd终端</em>，在<em>cmd终端</em>中输入<code>ping 192.168...</code><sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>且保证<em>cmd终端</em>中未显示有<em>数据包</em>丢失。</p>
 <hr>
 <blockquote>
 <p>参考资料：<a target="_blank" rel="noopener" href="https://kb.vmware.com/s/article/1003944?lang=zh_cn">https://kb.vmware.com/s/article/1003944?lang=zh_cn</a><br>
@@ -226,9 +226,11 @@
 <center><font color="FF3E96">希</font><font color="FF69B4">望</font><font color="FF7F00">这</font><font color="FF82AB">篇</font><font color="FFA07A">文</font><font color="FFB5C5">章</font><font color="FFBBFF">对</font><font color="FFC125">你</font><font color="FFA54F">有</font><font color="FF8C00">帮</font><font color="FF6347">助</font> 🥰</center><hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>不同电脑进入Bios的方法不同，具体情况请自行查找 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>若使用Windows10或11的操作系统，则VMware-workstation-player软件版本尽量在16以上，否则虚拟机开机时会一直蓝屏 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p>ping后面的192.168…为虚拟机的IPv4地址 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p>不同电脑进入Bios的方法不同，具体情况请自行查找 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>ping后面的192.168…为虚拟机的IPv4地址 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
