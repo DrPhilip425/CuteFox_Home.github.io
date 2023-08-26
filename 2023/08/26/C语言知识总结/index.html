@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>Tags: VMware | Alita</title>
+        <title>C语言知识总结 | Alita</title>
         <meta name="author" content="DrPhilip425" />
         <meta name="description" content="The website is my first static blog,thanks for browsing." />
         <meta name="keywords" content="Java" />
@@ -28,6 +28,10 @@
 
 
 <script src="/CuteFox_Home.github.io/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -143,121 +147,95 @@
 </transition>
 
             <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-                <div id="archives">
-    
-    <div class="categories-tags">
+                <div class="article">
+    <div>
+        <h1>C语言知识总结</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/26
+        </span>
         
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="background: #00bcd4">
+        <span class="category">
+            <a href="/CuteFox_Home.github.io/categories/%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                仅适用于Windows
+                知识汇总
             </a>
         </span>
         
         
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Hexo/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Hexo
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/CuteFox_Home.github.io/tags/C%E8%AF%AD%E8%A8%80/" style="color: #00a596">C语言</a>
+            </span>
+            
         </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/VMware/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                VMware
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E8%84%9A%E6%B3%A8/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                脚注
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/emoji%E8%A1%A8%E6%83%85/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                emoji表情
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/C%E8%AF%AD%E8%A8%80/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                C语言
-            </a>
-        </span>
-        
         
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/8/12</div>
-            <a href="/CuteFox_Home.github.io/2023/08/12/%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85Linux%E7%B3%BB%E7%BB%9F/">
-                <h3>用虚拟机软件安装Linux系统</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        教程
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #03a9f4">仅适用于Windows</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/VMware/" style="color: #00bcd4">VMware</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h1>1.基本格式</h1>
+<pre><code class="language-C">#include "stdio.h"
+...//函数体
+int main(){ 
+...//主函数
+}
+</code></pre>
+<h2 id="1-1简单实例">1.1简单实例</h2>
+<pre><code class="language-C">#include "stdio.h"
+void prinHello(){
+    printf("Hello World!");
+}
+int main(){
+    prinHello();
+    return 0;
+}
+</code></pre>
+<h2 id="1-2具体讲解">1.2具体讲解</h2>
+<p>(1)<code>#include</code>意思为<strong>导入</strong>，<code>stdio</code>为<strong>标准输入和输出</strong>，而<code>.h</code>为<strong>头文件</strong>，所以<code>#include"stdio.h"</code><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>的意思是<strong>导入一个标准输入和输出的头文件</strong>，这个<strong>头文件</strong>通常是<strong>调用系统自带的库里的文件</strong></p>
+<p>(2)①在<strong>函数体</strong>中<code>void</code>表示<strong>没有返回值</strong>，如需有返回值则将<code>void</code>改为<strong>具体的返回值类型</strong>，且在<code>{}</code>写上<code>retrun 返回值</code>；<br>
+②<code>prinHello</code>为<strong>函数名</strong>，函数名<strong>只能</strong>用<em>字母、下划线、数字表示</em>，<strong>不能</strong>使用<s>关键字</s>，且<strong>必须</strong>以<em>字母或下划线</em>开头，<strong>不能</strong>以<s>数字</s>开头；<br>
+③<code>()</code>里可以写形式参数（简称“形参”），形参用<code>数据类型 声明的变量</code>表示，也可以不添加形参表示<strong>空参</strong>，但在调用空参函数时还是需要<strong>在函数名后面</strong>加上<code>()</code>；<br>
+④<strong>函数具体内容</strong>写在<code>{}</code>里面，可以一个<code>{}</code>内嵌入许多<code>{}</code>，每一个语句写完都要用<code>;</code>隔开；<br>
+⑤<code>printf()</code>是<strong>系统自带的函数</strong>，表示把输入的内容<strong>打印</strong>在输出窗口，调用时在<code>printf</code>的<code>()</code>里添加<code>""</code>，并在<code>""</code>里输入想要打印的内容即可</p>
+<p>(3)①<code>int main()</code>是<strong>主函数的入口</strong>，其<code>{}</code>写入<strong>主函数执行语句</strong>，因为C语言<strong>从上到下</strong>编译的特性，普通函数<strong>只能</strong>写在主函数<strong>上面</strong>，且主函数<strong>只有</strong>一个；<br>
+②<code>prinHello()</code>是一个<strong>调用</strong>上面已经写好的<strong>函数</strong>的语句；<code>return 0</code>表示<strong>返回值为0</strong>，即退出程序</p>
+<h1>2.数据类型与格式符</h1>
+<p>(1)数据类型与它的格式符<strong>一一对应</strong>，数据类型声明变量，格式符放在输入输出语句中<br>
+(2)常见的有:int–%d，double–%lf，float–%f，char–%c，long–%ld，short–%hd，unsigned int–%u …</p>
+<h1>3.输出对齐与保留小数位数</h1>
+<p>如<code>print("%10.2lf",a)</code>中<code>10</code>表示<strong>向右对齐</strong>10个位置，同理<code>-10</code>表示<strong>向左对齐</strong>10个位置，而<code>.2</code>表示<strong>保留小数后2位</strong></p>
+<h1>4.</h1>
+<center><font color="FF3E96">希</font><font color="FF69B4">望</font><font color="FF7F00">这</font><font color="FF82AB">篇</font><font color="FFA07A">文</font><font color="FFB5C5">章</font><font color="FFBBFF">对</font><font color="FFC125">你</font><font color="FFA54F">有</font><font color="FF8C00">帮</font><font color="FF6347">助</font> 🥰</center><hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>调用系统自带的头文件一般是例如#include&lt;stdio.h&gt;用的尖括号，而如果是调用自己写的头文件一般是用的双引号；上面代码用的双引号是因为尖括号在代码高亮里显示不出来，暂时无法解决 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
     </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
     
 </div>
 
@@ -289,6 +267,29 @@
             
         </div>
         <script src="/CuteFox_Home.github.io/js/main.js"></script>
+        
+        
+<script
+    src="https://giscus.app/client.js"
+    data-repo="DrPhilip425/comment"
+    data-repo-id="R_kgDOKG8-OA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKG8-OM4CYmCp"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
         
 <canvas
     id="fireworks"
