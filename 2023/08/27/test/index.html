@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>test | Alita</title>
+        <meta name="author" content="DrPhilip425" />
+        <meta name="description" content="The website is my first static blog,thanks for browsing." />
+        <meta name="keywords" content="Java" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/CuteFox_Home.github.io/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/CuteFox_Home.github.io/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/CuteFox_Home.github.io/js/lib/highlight.js"></script>
+
+
+
+<script src="/CuteFox_Home.github.io/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/CuteFox_Home.github.io/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="\CuteFox_Home.github.io\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\CuteFox_Home.github.io\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/CuteFox_Home.github.io/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/CuteFox_Home.github.io/">
+            <span>ALITA</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;ALITA</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/CuteFox_Home.github.io/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div class="article">
+    <div>
+        <h1>test</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/27
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <div id="aplayer-RJPexmcC" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content">There’s no time for what was left behind
+
+我已无暇 去顾及过去
+
+It’s a maiden voyage after all
+
+毕竟这是 我们的远航
+
+All the pretty sinners
+
+妖媚有罪之人
+
+All the medal winners
+
+攫取荣誉之人
+
+Overachievers aiming for their prize
+
+为目标而来的参赛者
+
+I can feel it coming
+
+我知道它来了
+
+Don’t know why you’re running in the dark
+
+不知为何你投身黑暗
+
+&nbsp;
+
+She said
+
+她说
+
+&nbsp;
+
+I’m looking everywhere but I can’t find you
+
+我寻遍各地却无法找到你
+
+I’m getting closer like it’s right in front of me
+
+靠得更近 好似你就在我身边
+
+Yeah, I can feel you but I cannot see you
+
+耶，我能感受到 却看不到你
+
+I’m reaching out
+
+所以我伸出手
+
+Reaching out
+
+伸出手
+
+&nbsp;
+
+I could be dreaming but I feel so wide awake
+
+可能身处梦境 却无比清醒
+
+A secret yearning that is deep inside of me
+
+内心传来一阵隐秘的欢呼
+
+Yeah, I can feel you but I cannot see you
+
+耶，我能感受到 却看不到你
+
+I’m reaching out
+
+所以我伸出手
+
+Reaching out
+
+伸出手
+
+&nbsp;
+
+Yeah, I’m moving forward to my own beat once again
+
+耶，我将重回我的路上
+
+I can feel it calling after me
+
+我能听见 它的召唤
+
+All the pretty sinners
+
+妖媚有罪之人
+
+All the medal winners
+
+攫取荣誉之人
+
+Overachievers aiming for their prize
+
+为目标而来的参赛者
+
+I can feel it coming
+
+我知道它来了
+
+Don’t know why you’re running in the dark
+
+不知为何你投身黑暗
+
+&nbsp;
+
+She said
+
+她说
+
+&nbsp;
+
+I’m looking everywhere but I can’t find you
+
+我寻遍各地却无法找到你
+
+I’m getting closer like it’s right in front of me
+
+靠得更近 好似你就在我身边
+
+Yeah, I can feel you but I cannot see you
+
+耶，我能感受到 却看不到你
+
+I’m reaching out
+
+所以我伸出手
+
+Reaching out
+
+伸出手
+
+&nbsp;
+
+I could be dreaming but I feel so wide awake
+
+可能身处梦境 却无比清醒
+
+A secret yearning that is deep inside of me
+
+内心传来一阵隐秘的欢呼
+
+Yeah, I can feel you but I cannot see you
+
+耶，我能感受到 却看不到你
+
+I’m reaching out
+
+所以我伸出手
+
+Reaching out
+
+伸出手
+
+&nbsp;
+
+You used to tell me that you wanted us to run away
+
+你曾说 你想让我们逃离 困境
+
+Didn’t matter, no, ‘cause we’d be ok
+
+没啥大不了 总会变得更好
+
+Even now that we are miles apart
+
+即使我们现在相隔百里
+
+So far away
+
+之远
+
+You’re a part of me
+
+你我同心
+
+Yeah you light my way
+
+照亮了前路
+
+&nbsp;
+
+I’m looking everywhere but I can’t find you
+
+我寻遍各地却无法找到你
+
+I’m getting closer like it’s right in front of me
+
+靠得更近 好似你就在我身边
+
+Yeah, I can feel you but I cannot see you
+
+耶，我能感受到 却看不到你
+
+I’m reaching out
+
+所以我伸出手
+
+Reaching out
+
+伸出手
+
+&nbsp;
+
+I could be dreaming but I feel so wide awake
+
+可能身处梦境 却无比清醒
+
+A secret yearning that is deep inside of me
+
+内心传来一阵隐秘的欢呼
+
+Yeah, I can feel you but I cannot see you
+
+耶，我能感受到 却看不到你
+
+I’m reaching out
+
+所以我伸出手
+
+Reaching out
+</pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-RJPexmcC"),
+            narrow: false,
+            autoplay: false,
+            showlrc: 2,
+            music: {
+              title: "Running In The Dark",
+              author: "MONKEY MAJIK",
+              url: "Running In The Dark.mp3",
+              pic: "/CuteFox_Home.github.io/2023/08/27/test/run.jpg",
+              lrc: "run.txt"
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Alita
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;DrPhilip425
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/CuteFox_Home.github.io/js/main.js"></script>
+        
+        
+<script
+    src="https://giscus.app/client.js"
+    data-repo="DrPhilip425/comment"
+    data-repo-id="R_kgDOKG8-OA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKG8-OM4CYmCp"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+        
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="https://static-argvchs.netlify.app/js/fireworks.min.js"></script>
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="https://static-argvchs.netlify.app/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="https://static-argvchs.netlify.app/css/cursor.min.css" />
+<script src="https://static-argvchs.netlify.app/js/cursor.min.js"></script>
+    </body>
+</html>
