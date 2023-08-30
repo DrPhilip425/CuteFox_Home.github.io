@@ -220,7 +220,7 @@
 </code></pre>
 <p>效果如下<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
 
-        <div id="aplayer-MNAOuTCN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-BtJHQSkK" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content">There’s no time for what was left behind
 
 我已无暇 去顾及过去
@@ -450,7 +450,7 @@ Reaching out
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-MNAOuTCN"),
+            element: document.getElementById("aplayer-BtJHQSkK"),
             narrow: false,
             autoplay: false,
             showlrc: 2,
@@ -478,21 +478,21 @@ Reaching out
 </code></pre>
 <p>效果如下：</p>
 
-    <div id="aplayer-VyVMXxhx" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2068111443" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#7777"></div>
+    <div id="aplayer-ccrmfoxX" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2068111443" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#7777"></div>
 <p>其中，<code>{% meting %}</code>是<strong>必须</strong>写上的格式，其他<strong>标签参数</strong>具体如下：</p>
 <ul>
 <li><code>2068111443</code>是歌曲ID（必选），如网易云音乐分享歌曲链接的时<code>https://music.163.com/song?id=2068111443&amp;userid=</code>中<code>2068111443</code>就是该歌曲的ID</li>
 <li><code>netease</code>是网易云音乐平台（必选），也可以换成其他音乐平台如：<code>tencent</code>，<code>kugou</code>，<code>xiami</code>，<code>baidu</code>等</li>
-<li><code>song</code>是歌曲的类型（必选），单曲是<code>song</code>，歌单是<code>playlist</code>(效果可以参考我的<a href="">About</a>)，专辑是<code>album</code>，还有<code>search</code>和<code>artist</code></li>
+<li><code>song</code>是歌曲的类型（必选），单曲是<code>song</code>，歌单是<code>playlist</code>(效果可以参考我的<a href="https://drphilip425.github.io/CuteFox_Home.github.io/about/">About</a>)，专辑是<code>album</code>，还有<code>search</code>和<code>artist</code></li>
 <li><code>theme:#7777</code>是播放器主题色（可选），具体喜欢的RGB颜色请自行查找并更改</li>
 <li><code>mutex:true</code>意思是选择<code>true</code>时，如果<strong>同页面</strong>有其他aplayer播放，<strong>该播放器</strong>会暂停</li>
 <li><code>listmaxheight:340px</code>意思是播放列表的最大长度默认为<code>340px</code></li>
 <li><code>preload:auto</code>意思是音乐文件预载入模式为<code>auto</code>，可以改为<code>none</code>或<code>metadata</code><br>
 更多标签参数请看<a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md#meingjs-%E6%94%AF%E6%8C%81-30-%E6%96%B0%E5%8A%9F%E8%83%BD">选项列表</a></li>
 </ul>
-<p>③非post（正文）页面使用<br>
+<p>③非post（正文）页面使用问题<br>
 如果在非post（正文）页面中无法使用Aplayer播放器，可以试试在<code>.md</code>文件添加<code>{% aplayer %}</code>或<code>{% meting %}</code>之前添加如下内容：</p>
-<pre><code class="language-md">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"&gt;
+<pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"&gt;
 &lt;script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"&gt;&lt;/script&gt;
 </code></pre>
