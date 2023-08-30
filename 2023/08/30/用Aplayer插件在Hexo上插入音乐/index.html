@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>test | Alita</title>
+        <title>用Aplayer插件在Hexo上插入音乐 | Alita</title>
         <meta name="author" content="DrPhilip425" />
         <meta name="description" content="The website is my first static blog,thanks for browsing." />
         <meta name="keywords" content="Java" />
@@ -43,6 +43,7 @@
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="\CuteFox_Home.github.io\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\CuteFox_Home.github.io\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\CuteFox_Home.github.io\assets\js\Meting.min.js" class="meting-script-marker"></script>
 </head>
     <body>
         <div id="layout">
@@ -151,21 +152,75 @@
             <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
                 <div class="article">
     <div>
-        <h1>test</h1>
+        <h1>用Aplayer插件在Hexo上插入音乐</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/8/27
+            2023/8/30
         </span>
         
+        <span class="category">
+            <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                教程
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #00bcd4">Hexo</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/CuteFox_Home.github.io/tags/Aplayer/" style="color: #ffa2c4">Aplayer</a>
+            </span>
+            
+        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <div id="aplayer-RJPexmcC" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <h1>1.安装hexo-tag-aplayer插件</h1>
+<pre><code class="language-bash">$ npm install --save hexo-tag-aplayer
+</code></pre>
+<h2 id="2-使用">2.使用</h2>
+<h3 id="2-1-Aplayer播放器基本格式">2.1 Aplayer播放器基本格式</h3>
+<p>在每篇文章即<code>.md</code>文件中的正文中添加如下内容：</p>
+<pre><code class="language-md">{% aplayer title author music-url [picture-url, lrc:lrc-url, width:xx%, autoplay, narrow] %}
+</code></pre>
+<p>但如果无法直接在标签参数中加入空格，则直接将参数用<strong>双引号</strong>括起来使用，如下：</p>
+<pre><code class="language-md">{% aplayer "title" "author" "music-url" "picture-url" "lrc:lrc-url" "width:xx%" "autoplay" "narrow" %}
+</code></pre>
+<p>其中，<code>{% aplayer %}</code>是<strong>必须</strong>写上的格式，其他<strong>标签参数</strong>具体如下：</p>
+<ul>
+<li><code>title</code>：歌曲的标题（必选）</li>
+<li><code>author</code>：歌曲的作者（必选）</li>
+<li><code>music-url</code>：歌曲本体的URL地址（必选）</li>
+<li><code>picture-url</code>：歌曲封面的URL地址（可选）</li>
+<li><code>lrc-url</code>：歌词的URL地址（可选）</li>
+<li><code>width:xx%</code>：宽度（可选，默认100%）</li>
+<li><code>autoplay</code>：自动播放（可选，移动端暂不支持）</li>
+<li><code>narrow</code>：袖珍风格播放器（可选）<br>
+若在网站根目录下的<code>config.yml</code>文件中将<code>post_asset_folder</code>设为<code>true</code>，即开启了Hexo的文章资源文件夹功能，则可以将歌曲本体、歌曲封面、歌词放入<strong>与文章同名</strong>的对应的资源文件夹中，然后直接引用，如下：</li>
+</ul>
+<pre><code class="language-md">{% aplayer "Running In The Dark" "MONKEY MAJIK" "Running In The Dark.mp3" "Running In The Dark.jpg" "lrc:Running In The Dark.txt" %}
+</code></pre>
+<p>效果如下<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+
+        <div id="aplayer-MNAOuTCN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content">There’s no time for what was left behind
 
 我已无暇 去顾及过去
@@ -395,7 +450,7 @@ Reaching out
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-RJPexmcC"),
+            element: document.getElementById("aplayer-MNAOuTCN"),
             narrow: false,
             autoplay: false,
             showlrc: 2,
@@ -403,13 +458,56 @@ Reaching out
               title: "Running In The Dark",
               author: "MONKEY MAJIK",
               url: "Running In The Dark.mp3",
-              pic: "/CuteFox_Home.github.io/2023/08/27/test/run.jpg",
-              lrc: "run.txt"
+              pic: "/CuteFox_Home.github.io/2023/08/30/用Aplayer插件在Hexo上插入音乐/Running%20In%20The%20Dark.jpg",
+              lrc: "Running In The Dark.txt"
             }
           });
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
+<p>除了单曲，还支持列表模式，具体可参照<a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md#%E6%92%AD%E6%94%BE%E5%88%97%E8%A1%A8">播放列表</a></p>
+<h3 id="2-2-MeingJS播放器">2.2 MeingJS播放器</h3>
+<p>介绍：MetingJS是基于Meting API的APlayer衍生播放器<br>
+功能：将支持对于QQ音乐、网易云音乐、虾米、酷狗、百度等平台的音乐播放<br>
+①在网站根目录下的<code>config.yml</code>文件中添加如下：</p>
+<pre><code class="language-yml">aplayer:
+  meting: true
+</code></pre>
+<p>②在每篇文章即<code>.md</code>文件中的正文中添加如下内容：</p>
+<pre><code class="language-md">{% meting "2068111443" "netease" "song" "theme:#7777" "mutex:true" "listmaxheight:340px" "preload:auto" %}
+</code></pre>
+<p>效果如下：</p>
+
+    <div id="aplayer-VyVMXxhx" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2068111443" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#7777"></div>
+<p>其中，<code>{% meting %}</code>是<strong>必须</strong>写上的格式，其他<strong>标签参数</strong>具体如下：</p>
+<ul>
+<li><code>2068111443</code>是歌曲ID（必选），如网易云音乐分享歌曲链接的时<code>https://music.163.com/song?id=2068111443&amp;userid=</code>中<code>2068111443</code>就是该歌曲的ID</li>
+<li><code>netease</code>是网易云音乐平台（必选），也可以换成其他音乐平台如：<code>tencent</code>，<code>kugou</code>，<code>xiami</code>，<code>baidu</code>等</li>
+<li><code>song</code>是歌曲的类型（必选），单曲是<code>song</code>，歌单是<code>playlist</code>(效果可以参考我的<a href="">About</a>)，专辑是<code>album</code>，还有<code>search</code>和<code>artist</code></li>
+<li><code>theme:#7777</code>是播放器主题色（可选），具体喜欢的RGB颜色请自行查找并更改</li>
+<li><code>mutex:true</code>意思是选择<code>true</code>时，如果<strong>同页面</strong>有其他aplayer播放，<strong>该播放器</strong>会暂停</li>
+<li><code>listmaxheight:340px</code>意思是播放列表的最大长度默认为<code>340px</code></li>
+<li><code>preload:auto</code>意思是音乐文件预载入模式为<code>auto</code>，可以改为<code>none</code>或<code>metadata</code><br>
+更多标签参数请看<a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md#meingjs-%E6%94%AF%E6%8C%81-30-%E6%96%B0%E5%8A%9F%E8%83%BD">选项列表</a></li>
+</ul>
+<p>③非post（正文）页面使用<br>
+如果在非post（正文）页面中无法使用Aplayer播放器，可以试试在<code>.md</code>文件添加<code>{% aplayer %}</code>或<code>{% meting %}</code>之前添加如下内容：</p>
+<pre><code class="language-md">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"&gt;&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>hexo-tag-aplayer官方中文文档:<a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md">https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md</a><br>
+参考文章:<a target="_blank" rel="noopener" href="https://blog.csdn.net/hushhw/article/details/88092728">https://blog.csdn.net/hushhw/article/details/88092728</a></p>
+</blockquote>
+<center><font color="FF3E96">希</font><font color="FF69B4">望</font><font color="FF7F00">这</font><font color="FF82AB">篇</font><font color="FFA07A">文</font><font color="FFB5C5">章</font><font color="FFBBFF">对</font><font color="FFC125">你</font><font color="FFA54F">有</font><font color="FF8C00">帮</font><font color="FF6347">助</font> 🥰</center><hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>不知道是不是主题原因，我用F12查看发现我的歌曲本体和歌词都没成功上传，暂时没得到解决 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
     </div>
     
     
