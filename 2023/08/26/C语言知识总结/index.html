@@ -247,10 +247,27 @@ int main(){
 <h2 id="4-2-getchar-输入与putchar-输出">4.2 getchar()输入与putchar()输出</h2>
 <h3 id="4-2-1-getchar-输入">4.2.1 getchar()输入</h3>
 <p>(1)用法：</p>
-<p>(2)特点：</p>
+<pre><code class="language-C">int main(){
+    char a; //声明一个单个字符a
+    a=getchar(); //从键盘上读取输入的单个字符赋值给a
+}
+</code></pre>
+<p>(2)特点：<br>
+①无论从键盘上输入多少个字符，<code>getchar()</code>只读取输入的<strong>第一个字符</strong>作为返回值<br>
+②从<em>键盘输入字符</em> <strong>开始</strong>到<em>按下回车</em> 才<strong>结束</strong></p>
 <h3 id="4-2-2-putchar-输出">4.2.2 putchar()输出</h3>
 <p>(1)用法：</p>
-<p>(2)特点：</p>
+<pre><code class="language-C">int main(){
+    char a; //声明单个字符a
+    a='A'; //把a赋值为A
+    putchar(a); //输出A
+    putchar(0x41); //因为A在ASCII码中十六进制为0x41，所以输出A
+    putchar('\x41'); //因为'\x41'就相当于十六进制的0x41，所以也输出A
+}
+</code></pre>
+<p>(2)特点：<br>
+①向标准输出设备<strong>只</strong>输出<strong>一个字符</strong><br>
+②相当于<code>printf("%c",a)</code></p>
 <center><font color="FF3E96">希</font><font color="FF69B4">望</font><font color="FF7F00">这</font><font color="FF82AB">篇</font><font color="FFA07A">文</font><font color="FFB5C5">章</font><font color="FFBBFF">对</font><font color="FFC125">你</font><font color="FFA54F">有</font><font color="FF8C00">帮</font><font color="FF6347">助</font> 🥰</center><hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
