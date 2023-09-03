@@ -180,12 +180,12 @@
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #03a9f4">Hexo</a>
+                <a href="/CuteFox_Home.github.io/tags/Aplayer/" style="color: #00a596">Aplayer</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/Aplayer/" style="color: #ff7d73">Aplayer</a>
+                <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #03a9f4">Hexo</a>
             </span>
             
         </span>
@@ -220,7 +220,7 @@
 </code></pre>
 <p>效果如下<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
 
-        <div id="aplayer-Ftvzzfpy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-LGjMekEE" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content">There’s no time for what was left behind
 
 我已无暇 去顾及过去
@@ -450,7 +450,7 @@ Reaching out
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-Ftvzzfpy"),
+            element: document.getElementById("aplayer-LGjMekEE"),
             narrow: false,
             autoplay: false,
             showlrc: 2,
@@ -478,7 +478,7 @@ Reaching out
 </code></pre>
 <p>效果如下：</p>
 
-    <div id="aplayer-xTWYFiCG" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2068111443" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#7777"></div>
+    <div id="aplayer-eFaEXemT" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2068111443" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#7777"></div>
 <p>其中，<code>{% meting %}</code>是<strong>必须</strong>写上的格式，其他<strong>标签参数</strong>具体如下：</p>
 <ul>
 <li><code>2068111443</code>是歌曲ID（必选），如网易云音乐分享歌曲链接的时<code>https://music.163.com/song?id=2068111443&amp;userid=</code>中<code>2068111443</code>就是该歌曲的ID</li>
@@ -538,7 +538,38 @@ Reaching out
         </div>
         
     </div>
+    <div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("08/06/2023 00:00:00");//在此处修改你的建站时间
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
+    </div>
+    <div class="busuanzi-count">
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span class="site-uv">
+          <i class="fa fa-user"></i>
+          访问量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 次
+          <span class="post-meta-divider"> | </span>
+        </span>
+        <span class="site-uv">
+          <i class="fa fa-eye"></i>
+          总访客 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 人
+    </div>  
 </footer>
+
 
             </div>
             

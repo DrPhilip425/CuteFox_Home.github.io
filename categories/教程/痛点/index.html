@@ -150,22 +150,22 @@
         
         
         <span>
-            <a href="/CuteFox_Home.github.io/categories/%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" style="background: #00a596">
+            <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/" style="background: #03a9f4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                知识汇总
+                教程
             </a>
         </span>
         
         
         
         <span>
-            <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/" style="background: #03a9f4">
+            <a href="/CuteFox_Home.github.io/categories/%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                教程
+                知识汇总
             </a>
         </span>
         
@@ -217,7 +217,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/CuteFox_Home.github.io/tags/%E8%84%9A%E6%B3%A8/" style="color: #ff7d73">脚注</a>
+                        <a href="/CuteFox_Home.github.io/tags/%E8%84%9A%E6%B3%A8/" style="color: #03a9f4">脚注</a>
                     </span>
                     
                     <span class="tag">
@@ -249,7 +249,38 @@
         </div>
         
     </div>
+    <div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("08/06/2023 00:00:00");//在此处修改你的建站时间
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
+    </div>
+    <div class="busuanzi-count">
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span class="site-uv">
+          <i class="fa fa-user"></i>
+          访问量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 次
+          <span class="post-meta-divider"> | </span>
+        </span>
+        <span class="site-uv">
+          <i class="fa fa-eye"></i>
+          总访客 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 人
+    </div>  
 </footer>
+
 
             </div>
             
