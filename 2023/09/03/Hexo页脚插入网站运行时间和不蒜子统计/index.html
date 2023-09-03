@@ -177,22 +177,22 @@
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #00a596">Hexo</a>
+                <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #00bcd4">Hexo</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/%E7%BD%91%E7%AB%99%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1/" style="color: #03a9f4">网站运行时间统计</a>
+                <a href="/CuteFox_Home.github.io/tags/%E7%BD%91%E7%AB%99%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1/" style="color: #ff7d73">网站运行时间统计</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1/" style="color: #ffa2c4">访问量统计</a>
+                <a href="/CuteFox_Home.github.io/tags/%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1/" style="color: #00a596">访问量统计</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/%E6%80%BB%E8%AE%BF%E5%AE%A2%E6%95%B0%E7%BB%9F%E8%AE%A1/" style="color: #00a596">总访客数统计</a>
+                <a href="/CuteFox_Home.github.io/tags/%E6%80%BB%E8%AE%BF%E5%AE%A2%E6%95%B0%E7%BB%9F%E8%AE%A1/" style="color: #ffa2c4">总访客数统计</a>
             </span>
             
         </span>
@@ -201,10 +201,46 @@
     
     <div class="content" v-pre>
         <h1>1.网站页脚插入网站运行时间</h1>
+<p>找到博客主题文件夹对应的页脚渲染文件，例如我用的<em>Particlex</em>主题就是在<code>\themes\particlex\layout</code>这个文件夹里面，再找到<code>footer.ejs</code>文件，把下面代码插入到<code>&lt;/footer&gt;</code>之前，然后在<code>var grt= new Date("08/10/2020 00:00:00")</code>把<code>08/10/2020 00:00:00</code>修改为自己的建站时间</p>
+<pre><code>&lt;div&gt;
+&lt;span id="timeDate"&gt;载入天数...&lt;/span&gt;&lt;span id="times"&gt;载入时分秒...&lt;/span&gt;
+&lt;script&gt;
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("08/10/2020 00:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "已运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+&lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
 <h1>2.不蒜子脚本使用</h1>
+<p>找到博客主题文件夹对应的页脚渲染文件，例如我用的<em>Particlex</em>主题就是在<code>\themes\particlex\layout</code>这个文件夹里面，再找到<code>footer.ejs</code>文件，把下面代码插入到<code>&lt;/footer&gt;</code>之前；然后<code>&lt;script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"&gt;&lt;/script&gt;</code>这行代码里<code>src=""</code>后面要填的就是不蒜子<strong>最新的</strong>脚本域名，可以在不蒜子官方网址查询</p>
+<pre><code>&lt;div class="busuanzi-count"&gt;
+    &lt;script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"&gt;&lt;/script&gt;
+    &lt;span class="site-uv"&gt;
+      &lt;i class="fa fa-user"&gt;&lt;/i&gt;
+      访问量 &lt;span class="busuanzi-value" id="busuanzi_value_site_uv"&gt;&lt;/span&gt; 次
+      &lt;span class="post-meta-divider"&gt; | &lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="site-uv"&gt;
+      &lt;i class="fa fa-eye"&gt;&lt;/i&gt;
+      总访客 &lt;span class="busuanzi-value" id="busuanzi_value_site_pv"&gt;&lt;/span&gt; 人
+    &lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
 <blockquote>
 <p>不蒜子官方网址:<a target="_blank" rel="noopener" href="http://ibruce.info/2015/04/04/busuanzi/">http://ibruce.info/2015/04/04/busuanzi/</a><br>
-参考文章:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39720594/article/details/105411030">https://blog.csdn.net/qq_39720594/article/details/105411030</a></p>
+参考文章1:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39720594/article/details/105411030">https://blog.csdn.net/qq_39720594/article/details/105411030</a><br>
+参考文章2:<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangqingchuan92/article/details/126346205">https://blog.csdn.net/wangqingchuan92/article/details/126346205</a></p>
 </blockquote>
 <center><font color="FF3E96">希</font><font color="FF69B4">望</font><font color="FF7F00">这</font><font color="FF82AB">篇</font><font color="FFA07A">文</font><font color="FFB5C5">章</font><font color="FFBBFF">对</font><font color="FFC125">你</font><font color="FFA54F">有</font><font color="FF8C00">帮</font><font color="FF6347">助</font> 🥰</center>
     </div>
