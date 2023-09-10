@@ -221,7 +221,7 @@ int main(){
 <h3 id="4-1-1-gets-输入">4.1.1 gets()输入</h3>
 <p>(1)用法：</p>
 <pre><code class="language-C">int main(){
- char arr[10],*s; //声明一个字符数组，即字符串和一个字符串指针
+ char arr[10],*s; //声明一个字符数组变量，即字符串和一个字符串指针
  gets(arr); //从键盘上输入字符串，直到回车结束  
  gets(s); //从键盘上输入字符串，直到回车结束
 }
@@ -234,7 +234,7 @@ int main(){
 <pre><code class="language-C">int main(){
     char arr[]="Hello World!"; //声明一个字符串arr并给该字符串赋值
     puts(arr); //输出arr内容到屏幕
-    char *s; //声明一个字符串指针s
+    char* s; //声明一个字符串指针s
     s="Hi! World"; //给s赋值
     puts(s); //输出s指向的内容到屏幕
     puts("Hello China!"); //直接输出括号里的内容
@@ -248,17 +248,19 @@ int main(){
 <h3 id="4-2-1-getchar-输入">4.2.1 getchar()输入</h3>
 <p>(1)用法：</p>
 <pre><code class="language-C">int main(){
-    char a; //声明一个单个字符a
+    char a; //声明一个单个字符变量a
     a=getchar(); //从键盘上读取输入的单个字符赋值给a
 }
 </code></pre>
 <p>(2)特点：<br>
 ①无论从键盘上输入多少个字符，<code>getchar()</code>只读取输入的<strong>第一个字符</strong>作为返回值<br>
 ②从<em>键盘输入字符</em> <strong>开始</strong>到<em>按下回车</em> 才<strong>结束</strong></p>
+<p>(3)解释：<br>
+<code>getchar()</code>是<code>stdio.h</code>中的<em>库函数</em>，它的作用是从<code>stdio</code>流中读入<strong>一个字符</strong>；键盘输入字符是<em>先存入缓冲区</em>，当你<em>按下回车</em>时，<code>getchar</code>就会<em>进入缓冲区</em>读取字符，<em>一次</em>只读取<em>第一个字符</em>，我们输入的一串字符被读出来是<code>getchar</code><em>循环读取</em>的结果，而<em>回车键</em>取代了我们输入的<em>第一个字符</em>，我们输入<code>getchar()</code>来<em>清除回车键</em>，达到从<em>第一个字符开始读起</em>的目的</p>
 <h3 id="4-2-2-putchar-输出">4.2.2 putchar()输出</h3>
 <p>(1)用法：</p>
 <pre><code class="language-C">int main(){
-    char a; //声明单个字符a
+    char a; //声明单个字符变量a
     a='A'; //把a赋值为A
     putchar(a); //输出A
     putchar(0x41); //因为A在ASCII码中十六进制为0x41，所以输出A
@@ -268,10 +270,127 @@ int main(){
 <p>(2)特点：<br>
 ①向标准输出设备<strong>只</strong>输出<strong>一个字符</strong><br>
 ②相当于<code>printf("%c",a)</code></p>
+<h1>5.内存分配与释放函数</h1>
+<h2 id="5-1-malloc函数分配动态内存地址">5.1 malloc函数分配动态内存地址</h2>
+<p>(1)用法：</p>
+<pre><code class="language-C">#include"stdlib.h"
+#include"stdio.h"
+int main(){
+    int* n; //声明一个整数型指针变量n
+    n = (int*) malloc(2*sizeof(int)); //为变量n分配动态内存空间
+    *n = 5; //把5这个值转成二进制存放在变量n的内存空间里
+    printf("变量n地址为: %d\n", n);
+    printf("变量n的值为: %d\n", *n);
+    return 0;    
+}
+</code></pre>
+<p>(2)解释：<br>
+①使用<code>malloc</code>函数<em>分配动态内存空间</em>时要先引入<code>#include&lt;stdlib.h&gt;</code>头文件<br>
+②<code>malloc</code>函数的<em>函数原型</em>为<code>void* malloc(unsigned int size)</code>，它根据<em>参数</em>指定的尺寸来分配内存空间，且返回一个<code>void</code>型指针，指向新分配的内空间的<em>初始地址</em>；但如果内存分配失败（内存不足），则函数返回<code>NULL</code><br>
+③<code>n=(int*)malloc(2*sizeof(int))</code>这段代码中，<code>sizeof(int)</code>是分配一个整数类型所占用的字节数的内存空间，通常为4个字节，所以<code>malloc(2*sizeof(int))</code>表示分配一个大小为<code>2*sizeof(int)</code>字节的内存空间，即分配了8个字节大小的内存空间<br>
+④<code>n=(int*)malloc(2*sizeof(int))</code>这段代码中，<code>(int*)malloc</code>这样写的原因是<code>malloc</code>函数原本返回的是一个<code>void*</code>类型的指针，但指针变量<code>n</code>是<code>int*</code>型的，所以需要将其<em>强制转换</em>为<code>int*</code>类型，才能够将其赋值给一个<code>int*</code>型即<strong>整型指针变量</strong></p>
+<h2 id="5-2-free函数释放动态分配的内存">5.2 free函数释放动态分配的内存</h2>
+<p>(1)用法：</p>
+<pre><code class="language-C">#include"stdlib.h"
+#include"stdio.h"
+int main(){
+    int* n; //声明一个整数型指针变量n
+    n = (int*) malloc(2*sizeof(int)); //为变量n分配动态内存空间
+    *n = 5; //把5这个值转成二进制存放在变量n的内存空间里
+    printf("变量n地址为: %d\n", n);
+    printf("变量n的值为: %d\n", *n);
+    free(n); //释放变量n分配的动态内存
+    return 0;    
+}
+</code></pre>
+<p>(2)解释：<br>
+①使用<code>free</code>函数<em>释放动态分配的内存</em>时要先引入<code>#include&lt;stdlib.h&gt;</code>头文件<br>
+②用<code>free</code>函数去释放<strong>要释放的内存的指针</strong>为<code>NULL</code>时，则无事发生；但<strong>释放内存后的指针</strong>不能再<code>free</code>一次，否则会导致程序崩溃或者出现错误<br>
+③只有使用<code>malloc</code>、<code>calloc</code>、<code>realloc</code>等函数动态分配的内存，才能用<code>free()</code>函数进行释放<br>
+④<code>free</code>函数的函数原型为<code>void free(void* memblock)</code>，其中<code>memblock</code>参数是一个指针，指向要释放的内存空间，以避免内存泄漏；但<code>memblock</code>指针本身并不会消失，所以一般可以使用<code>free</code>函数后，<code>memblock=NULL</code>使<code>memblock</code>指针变为空指针</p>
+<h1>6. enum枚举类型</h1>
+<p>(1)用法：</p>
+<pre><code class="language-C">#include "stdio.h"
+enum Weekday { //定义枚举类
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+};
+int main() {
+    enum Weekday today = Wednesday; //声明enum Weekday类型的today并用Wednesday赋值
+    printf("今天是星期%d\n", today + 1);
+    return 0;
+}
+</code></pre>
+<p>(2)解释：<br>
+①枚举类型使用<code>enum</code>关键字进行定义<br>
+②枚举类型中的常量<em>默认从0开始递增</em>，所以上面的例子中，<code>Monday</code>的值为<code>0</code>，<code>Tuesday</code>的值为<code>1</code>，以此类推<br>
+③如果需要改变枚举类型中常量的值，可以在定义枚举类型时<em>显式指定</em>常量的值，如<code>Monday = 1</code></p>
+<h1>7. typedef自定义类型与struct结构体</h1>
+<p>(1)用法：</p>
+<pre><code class="language-C">typedef struct Book{ //新的数据类型为struct Book
+	char no[20];//ISBN
+	char name[20];//名字
+	float price;//价格
+}novel; //别名为novel
+
+struct Book{ //新的数据类型为struct Book
+   char no[20];//ISBN
+   char name[20];//名字
+   float price;//价格
+};
+</code></pre>
+<p>(2)解释：<br>
+①结构体<code>struct</code>用于<strong>定义</strong>一个<strong>新的数据类型</strong>，这个<strong>新的数据类型</strong>可以由<strong>任意的基本数据类型</strong>构成，如<code>int</code>、<code>char</code>、<code>float</code>等<br>
+②自定义类型<code>typedef</code>一般和结构体<code>struct</code>一起用，只不过在<code>typedef struct Book{};</code>的<code>;</code>前多了一个可以<strong>添加别名</strong>的位置，如上面的<code>novel</code>，这个<strong>别名</strong>用于充当<strong>新的数据类型</strong><code>struct Book</code>来声明变量</p>
+<h1>8. Status用法</h1>
+<p>(1)用法：</p>
+<pre><code class="language-C">#include "stdio.h"
+typedef enum { //自定义枚举类型
+    SUCCESS, //成功
+    ERROR //失败
+} Status; //别名为Status
+Status foo() { //Status类型的foo函数
+    return SUCCESS;// 函数逻辑
+}
+int main() {
+    Status result = foo(); //声明一个Status类型的result，用同样Status类型的foo函数赋值
+    if (result == SUCCESS) {
+        printf("函数执行成功\n");
+    } else {
+        printf("函数执行失败\n");
+    }
+    return 0;
+}
+</code></pre>
+<p>(2)解释：<br>
+Status通常是一个自定义的类型（<code>typedef</code>），用于表示函数的返回状态；它通常被定义为一个枚举类型（<code>enum</code>）或整型类型（<code>int</code>），用来表示函数执行的结果，例如：成功、失败或其他状态</p>
+<h1>9. assert函数</h1>
+<p>(1)用法：</p>
+<pre><code class="language-C">#include "assert.h"
+#include "stdio.h"
+int main() {
+    FILE *fp = NULL;
+    fp = fopen("file.txt", "r");
+    assert(fp != NULL); //如果文件打开失败，则程序会通过assert断言终止运行
+    char c = fgetc(fp);
+    printf("读取字符: %c\n", c);
+    fclose(fp);
+    return 0;
+}
+</code></pre>
+<p>(2)解释：<br>
+①<code>assert</code>函数使用时需要调用<code>#include&lt;assert.h&gt;</code>头文件<br>
+②<code>assert</code>函数是一个调试宏，用于<strong>判断</strong>某个条件<strong>是否成立</strong>；如果条件<strong>不成立</strong>，则输出错误信息并调用<code>abort</code>函数，使程序异常终止；其作用可以在<strong>程序开发</strong>和<strong>调试</strong>过程中帮助我们<strong>快速定位错误</strong>，并且可以<strong>避免</strong>在错误条件下程序继续执行导致更严重的问题<br>
+③在上面的代码中，如果文件<strong>打开失败</strong>，则<code>fp</code>指向<code>NULL</code>，此时<code>assert(fp != NULL)</code>条件不成立，程序会输出错误信息并终止运行；如果文件成功打开，则会正常读取文件中的字符</p>
 <center><font color="FF3E96">希</font><font color="FF69B4">望</font><font color="FF7F00">这</font><font color="FF82AB">篇</font><font color="FFA07A">文</font><font color="FFB5C5">章</font><font color="FFBBFF">对</font><font color="FFC125">你</font><font color="FFA54F">有</font><font color="FF8C00">帮</font><font color="FF6347">助</font> 🥰</center><hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>调用系统自带的头文件一般是例如#include&lt;stdio.h&gt;用的尖括号，而如果是调用自己写的头文件一般是用的双引号；上面代码用的双引号是因为尖括号在代码高亮里显示不出来，暂时无法解决 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>调用系统自带的头文件一般是例如#include&lt;stdio.h&gt;用的尖括号，而如果是调用自己写的头文件一般是用的双引号；上面的代码用的双引号是因为尖括号在代码高亮里显示不出来，暂时无法解决 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>

@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>Tags: C++语言 | Alita</title>
+        <meta name="author" content="DrPhilip425" />
+        <meta name="description" content="The website is my first static blog,thanks for browsing." />
+        <meta name="keywords" content="Java" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/CuteFox_Home.github.io/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/CuteFox_Home.github.io/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/CuteFox_Home.github.io/js/lib/highlight.js"></script>
+
+
+
+<script src="/CuteFox_Home.github.io/js/lib/preview.js"></script>
+
+
+
+
+
+<link rel="stylesheet" href="/CuteFox_Home.github.io/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/CuteFox_Home.github.io/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/CuteFox_Home.github.io/">
+            <span>ALITA</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;ALITA</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/CuteFox_Home.github.io/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div id="archives">
+    
+    <div class="categories-tags">
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/C-%E8%AF%AD%E8%A8%80/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                C++语言
+            </a>
+        </span>
+        
+        
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/C%E8%AF%AD%E8%A8%80/" style="background: #00a596">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                C语言
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/Hexo/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                Hexo
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/%E5%BD%A9%E8%89%B2%E6%BB%9A%E5%8A%A8%E6%96%87%E5%AD%97/" style="background: #00a596">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                彩色滚动文字
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/%E6%A0%87%E9%A2%98%E6%90%9E%E6%80%AA%E7%89%B9%E6%95%88/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                标题搞怪特效
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/%E7%BD%91%E7%AB%99%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                网站运行时间统计
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                访问量统计
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/%E6%80%BB%E8%AE%BF%E5%AE%A2%E6%95%B0%E7%BB%9F%E8%AE%A1/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                总访客数统计
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/Java%E8%AF%AD%E8%A8%80/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                Java语言
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/Aplayer/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                Aplayer
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="background: #00a596">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                仅适用于Windows
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                数据库
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/VMware/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                VMware
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/%E8%84%9A%E6%B3%A8/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                脚注
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/CuteFox_Home.github.io/tags/emoji%E8%A1%A8%E6%83%85/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                emoji表情
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2023/9/9</div>
+            <a href="/CuteFox_Home.github.io/2023/09/09/C-%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+                <h3>C++语言知识总结</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/CuteFox_Home.github.io/categories/%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        知识汇总
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/CuteFox_Home.github.io/tags/C-%E8%AF%AD%E8%A8%80/" style="color: #03a9f4">C++语言</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Alita
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;DrPhilip425
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+    <div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("08/06/2023 00:00:00");//在此处修改你的建站时间
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
+    </div>
+    <div class="busuanzi-count">
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span class="site-uv">
+          <i class="fa fa-user"></i>
+          访问量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 次
+          <span class="post-meta-divider"> | </span>
+        </span>
+        <span class="site-uv">
+          <i class="fa fa-eye"></i>
+          总访客 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 人
+    </div>  
+</footer>
+
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/CuteFox_Home.github.io/js/main.js"></script>
+        
+    <p style="text-align:center" id="saintwei"></p>
+        <script>
+           var saintwei = function (r) {
+               function t() {
+                   return b[Math.floor(Math.random() * b.length)]
+               }
+               function e() {
+                   return String.fromCharCode(94 * Math.random() + 33)
+               }
+               function n(r) {
+                   for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                       var l = document.createElement("span");
+                       l.textContent = e(), l.style.color = t(), n.appendChild(l)
+                   }
+                   return n
+               }
+               function i() {
+                   var t = o[c.skillI];
+                   c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+               }
+               var l = " ",
+                   o = ["Welcome to CuteFox'Home", "夜风是她的车辇，星辰是她的舞伴", "寻找的过程是无价的，而找到答案以后，人们便只会歌颂答案", "Are You Ready To Fly", "那会是一片索拉里斯之海，一切都会在无序中存续"].map(function (r) {
+                       return r + " "
+                   }),
+                   a = 2,
+                   g = 1,
+                   s = 5,
+                   d = 75,
+                   b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+                   c = {
+                       text: "",
+                       prefixP: -s,
+                       skillI: 0,
+                       skillP: 0,
+                       direction: "forward",
+                       delay: a,
+                       step: g
+                   };
+               i()
+           };
+           saintwei(document.getElementById('saintwei'));
+        </script>
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="https://static-argvchs.netlify.app/js/fireworks.min.js"></script>
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="https://static-argvchs.netlify.app/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="https://static-argvchs.netlify.app/css/cursor.min.css" />
+<script src="https://static-argvchs.netlify.app/js/cursor.min.js"></script>
+<script type="text/javascript">
+    var OriginTitile=document.title,st;
+	document.addEventListener("visibilitychange",function(){
+        document.hidden?(document.title="o(இ௰இ)怎么就走了！",clearTimeout(st)):(document.title="☆*o(≧▽≦)o*☆欢迎回来！",st=setTimeout(function(){document.title=OriginTitile},3e3))
+    })
+</script>
+    <script src="/CuteFox_Home.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/CuteFox_Home.github.io/live2dw/assets/assets/hibiki.model.json"},"display":{"position":"right","width":135,"height":316,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body>
+</html>
