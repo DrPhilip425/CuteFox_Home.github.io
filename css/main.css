@@ -980,3 +980,19 @@ ol li {
         padding-left: 20px;
     }
 }
+#tagcloud {
+    background: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #d9d9d980;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60vh;
+    justify-content: center;
+    overflow: auto;
+    position: sticky;
+    text-align: center;
+    top: 20vh;
+    width: 300px;
+}
