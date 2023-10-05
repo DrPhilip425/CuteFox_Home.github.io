@@ -185,7 +185,66 @@
     </div>
     
     <div class="content" v-pre>
-        
+        <h1>1.基本结构</h1>
+<br>
+<h2 id="1-1文件名与类名">1.1文件名与类名</h2>
+<pre><code class="language-Java">public class HelloWorld{
+    public static void main(String[] args){
+        System.out.println("hello,world!你好，世界！");
+    }
+}
+</code></pre>
+<p>①<code>public class 类名</code>这个<code>public</code>只能有<strong>一个</strong><br>
+②<code>文件名.java</code>这个<em>文件名</em>要和<code>public class 类名</code>的<em>类名</em><strong>一样</strong>；就如上面代码中<em>类名</em>是<code>HelloWorld</code>，则该<code>.java</code>文件的<em>文件名</em>也必须是<code>HelloWorld</code></p>
+<br>
+<h2 id="1-2main程序执行的入口">1.2<code>main</code>程序执行的入口</h2>
+<pre><code class="language-Java">public class HelloWorld{
+    public static void main(String[] args){
+        System.out.println("hello,world!你好，世界！");
+    }
+}
+class HelloChina{
+    public static void main(String a[]){
+        System.out.println("hello,world!你好，中国！");
+    }
+}
+</code></pre>
+<p>①<code>public static void main(String[] args)</code>是一个<strong>可执行的</strong>Java程序<strong>必须</strong>有的，因为它是执行语句的<strong>入口</strong><br>
+②<code>public static void main(String[] args)</code>其中的<code>String[] args</code>可以写成<code>String arg[]</code>，<code>arg</code>也可以改成<strong>任意</strong>可表示<strong>数组</strong>的符号如<code>a</code>等；有<code>public</code>是因为它<strong>权限最大</strong>，有<code>static</code>是因为它<strong>与类相关</strong>，有<code>void</code>是因为它<strong>在栈帧最底部</strong>不需要返回值<br>
+③<strong>一个</strong>Java程序里可以有多个<code>main</code></p>
+<br>
+<h1>2.输出与输入</h1>
+<br>
+<h2 id="2-1输出">2.1输出</h2>
+<pre><code class="language-Java">public class PrintTest{
+    public static void main(String[] args){
+    System.out.print(); //只输出，不换行
+    System.out.print(""+"\n"); //先输出后换行
+    System.out.println(); //先输出后换行
+    System.out.println("abc123"); //双引号里写字符串
+    System.out.println(123+4); //整数直接计算
+    System.out.println(0.1+0.2); //输出不是0.3，而是0.30000000000000004，因为现代编译器基本采用IEEE 754标准，所以不能实现每一个十进制小数对应一个二进制小数
+    System.out.println("Stu"+"dent"); //+(加号)为连接符
+    int a=1;
+    int b=1;
+    System.out.println(a==b); //==(连等号)为判断是否相等的符号
+    }
+}
+</code></pre>
+<br>
+<h2 id="2-2输入">2.2输入</h2>
+<pre><code class="language-Java">import java.util.Scanner; //导入Java的util包里的Scanner类
+public class ScanTest{
+    public static void main(String[] args){
+        Scanner n=new Scanner(System.in); //创建Scanner类型的对象n，并使n能够获取控制台输入的功能即Scanner(System.in)
+        String name=n.next(); //创建String类型的对象name，把对象n的next()方法赋值给name，并开始输入name的值
+        System.out.println("name:"+name); //输出刚刚输入的name
+    }
+}
+</code></pre>
+<br>
+<h1>3.</h1>
+
     </div>
     
     
