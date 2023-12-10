@@ -352,11 +352,11 @@
 #loading h2,
 #loading p,
 #loading img {
-    margin: 10px;
+    margin: 6px;
 }
 #loading img {
     border-radius: 0;
-    height: 50px;
+    height: 100px;
 }
 #loading-circle {
     align-items: center;
