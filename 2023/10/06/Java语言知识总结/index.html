@@ -177,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/Java%E8%AF%AD%E8%A8%80/" style="color: #ff7d73">Java语言</a>
+                <a href="/CuteFox_Home.github.io/tags/Java%E8%AF%AD%E8%A8%80/" style="color: #00a596">Java语言</a>
             </span>
             
         </span>
@@ -336,7 +336,7 @@ public class ScanTest{
     char c2=48;
     System.out.println("c2="+c2); //c2=0，ASCII码的第48个为0
     System.out.println("c1+c2="+(c1+c2)); //49，1+48
-    System.out.println("a2+c1="+(a2+c1)); //50，49+1
+    System.out.println("a2+c1="+(a2+c1)); //50，49+1，a2的'1'为ASCII码的第49个
     System.out.println("a2+c2="+(a2+c2)); //97，49+48
 }
 </code></pre>
@@ -428,7 +428,7 @@ public class ScanTest{
     int i2=128;  
     //String str=str1+i2-3; //报错，因为String类型表示字符串，-表示减法，所以+被视为了加法而非连接
     boolean isMan=true;
-    //String str=isMan+i2+str1; //报错，因为布尔类型isMan开头会被视为加法而非连接，是错的，应该把str1放前面
+    //String str=isMan+i2+str1; //报错，因为布尔类型isMan开头会+会被视为加法而非连接，是错的，应该把str1放前面
 
     String str=str2+i2; //String类型做连接运算后还是String类型
     System.out.println(str); //128
@@ -488,7 +488,7 @@ public class ScanTest{
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 Alita
+            2022 - 2024 Alita
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
