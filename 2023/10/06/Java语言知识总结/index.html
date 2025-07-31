@@ -177,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/CuteFox_Home.github.io/tags/Java%E8%AF%AD%E8%A8%80/" style="color: #00a596">Java语言</a>
+                <a href="/CuteFox_Home.github.io/tags/Java%E8%AF%AD%E8%A8%80/" style="color: #00bcd4">Java语言</a>
             </span>
             
         </span>
@@ -451,23 +451,1760 @@ public class ScanTest{
 <p>①<em>String</em>类型变量用<code>""</code>赋值<br>
 ②如果用<strong>连接运算</strong>的表达式来给<em>String</em>类型变量赋值，则首先不能出现<code>-</code>，其次<em>boolean</em>的变量不能放在<code>=</code>后的第一个，然后要么<code>=</code>后面有<em>String</em>类型的变量，要么有<code>""</code></p>
 <br>
-<h1>5.包装类和自动装箱、拆箱</h1>
+<h1>5.关键字</h1>
 <br>
-<h2 id="5-1">5.1</h2>
-<h1>6.自动类型提升和强制类型转换</h1>
-<h1>7.基本数据类型与引用数据类型(String)的区别及转换</h1>
+<h2 id="5-1-this">5.1 this</h2>
+<p><em>this</em>用于解决变量冲突问题(区分实例变量和局部变量)，当局部变量和成员变量同名时，用<em>this. XXX</em>来指代本类中的的成员变量<em>private XXX</em></p>
+<pre><code class="language-java">public class Course{
+    private String name;
+    public void setName(String name){
+        this.name = name;
+    }
+}
+</code></pre>
 <br>
-<h2 id="7-1区别1：变量和值存放的位置">7.1区别1：变量和值存放的位置</h2>
-<p>①<em>基本数据类型</em>的<strong>变量和值</strong>是<strong>一起</strong>存放在被划分的<em>栈内存</em>里的；而<em>引用数据类型</em>的<strong>变量</strong>是存放在<strong>栈内存</strong>中，但其<strong>值</strong>是存放在<strong>堆内存</strong>中的<br>
-②所以两个<em>基本数据类型</em>的变量的<strong>值</strong>可以是一样的；但如果两个<em>引用数据类型</em>的变量有<strong>相同的值</strong>，那么他们会<strong>共用同一个</strong>堆内存里的<strong>值</strong>，因为这个<strong>值</strong>的<strong>地址</strong>是<strong>唯一的</strong>，而这两个变量都指向的这个地址</p>
+<h2 id="5-2-static">5.2 static</h2>
+<p><em>static</em>用于修饰成员变量和方法(区分实例对象)，一般于<em>public</em>搭配使用，且修饰后属于整个类(非实例对象)，会被类的所有对象共享，所以它随着类的加载而加载，也只能被类调用，而且因为共享，如果有值有变动所有的都会一起变动</p>
+<pre><code class="language-java">public class Course{
+    public static String name;
+}
+// 测试类
+public class test{
+    public static void main(String[] args){
+    Course.name = "计算机组成原理";
+    }
+}
+</code></pre>
 <br>
-<h2 id="7-2区别2：判断是否相等">7.2区别2：判断是否相等</h2>
-<p>①<em>基本数据类型</em>用<code>==</code>和<code>!=</code>来判断数据是否相等<br>
-②<em>引用数据类型</em>用<code>equals()</code>来判断数据是否相等(因为<code>equals()</code>比较的是<strong>内存地址</strong>)</p>
+<h2 id="5-3-super">5.3 super</h2>
+<p>在子类中用于访问父类的成员变量、方法、构造函数，因为Java的就近原则，只有自己类中没有的才去访问父类，且子类中与父类同名的属性和方法会被子类自己的覆盖掉，所以说用<em><a target="_blank" rel="noopener" href="http://super.XXX">super.XXX</a></em>可以用于区分是子类的成员还是父类的成员</p>
+<pre><code class="language-java">//父类
+class Animal {
+  protected String type="动物";
+}
+//子类
+class Dog extends Animal {
+  public String type="哺乳动物";
+
+  public void printType() {
+    System.out.println("我是 " + type); //我是哺乳动物
+    System.out.println("我是一只 " + super.type); //我是一只动物
+  }
+}
+//主函数
+class Main {
+  public static void main(String[] args) {
+    Dog dog1 = new Dog();
+    dog1.printType();
+  }
+}
+</code></pre>
 <br>
-<h2 id="7-3转换">7.3转换</h2>
-<p>①<em>String类型</em>变<em>基本数据类型</em>：</p>
-<p>②<em>基本数据类型</em>变<em>String类型</em>：</p>
+<h2 id="5-4-final">5.4 final</h2>
+<p>用于修饰变量(类属性、对象属性、局部变量、形参)、方法(类方法、对象方法)、类，修饰后不能改变，其也不能被重写、继承等，因为<em>fin</em>了</p>
+<pre><code class="language-java">public class Main {
+   public static void main(String[] args) {
+       String a = "xiaomeng2";
+       final String b = "xiaomeng";
+       String d = "xiaomeng";
+       String c = b + 2;
+       String e = d + 2;
+       System.out.println((a == c)); //true
+       System.out.println((a == e)); //false
+   }
+}
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42651904/article/details/87708198">深入理解final关键字（详解）-CSDN博客</a></p>
+<br>
+<h2 id="5-5-instanceof">5.5 instanceof</h2>
+<p>①类型检查：为了向下转型/强制转换时，确保对象是特定的子类或者实例</p>
+<p>②条件逻辑：根据对象的具体类型执行特定行为</p>
+<p>③多态行为：在多态情况下，根据实际对象类型执行特定行为</p>
+<p>④格式：<code>if(对象 instanceof 类型)</code></p>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+        //判断是否符合类型
+		if (obj instanceof String) {
+    	//然后强制转换
+    	String s = (String) obj;
+    	//然后才能使用
+        s.stringMethod();
+        }
+        if (obj instanceof String s) {
+        // JDK16之后，如果类型匹配，则可以直接使用s
+		}
+    }
+}
+</code></pre>
+<br>
+<h1>6.JavaBean</h1>
+<p>就是封装类，该私有私有，该暴露暴露，为了安全性考虑，满足：</p>
+<p>①成员变量全部私有，提供其getter/setter方法</p>
+<p>②需要一个无参构造器，有参可选</p>
+<br>
+<h1>7.方法重写与方法重载的区别</h1>
+<p>重写多用于重写接口中的方法，重载多用于写同一个类中要实现的同一类型方法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>特征</strong></th>
+<th style="text-align:left"><strong>方法重写 (Override)</strong></th>
+<th style="text-align:left"><strong>方法重载 (Overload)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>定义位置</strong></td>
+<td style="text-align:left"><strong>子类中</strong></td>
+<td style="text-align:left"><strong>同一个类中</strong> (或父子类之间，但本质在同一个类)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>目的</strong></td>
+<td style="text-align:left">提供父类方法的<strong>特定实现</strong>，实现<strong>运行时多态</strong></td>
+<td style="text-align:left">提供处理<strong>不同类型/数量参数</strong>的<strong>同名方法</strong>，<strong>编译时多态</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>参数列表</strong></td>
+<td style="text-align:left"><strong>必须完全相同</strong> (类型、顺序、数量)</td>
+<td style="text-align:left"><strong>必须不同</strong> (类型、顺序、数量至少一项不同)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>返回类型</strong></td>
+<td style="text-align:left"><strong>必须相同或协变</strong> (Java 5+，子类重写方法的返回类型可以是父类方法返回类型的子类型)</td>
+<td style="text-align:left"><strong>可以不同</strong> (与参数列表不同无关)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>访问修饰符</strong></td>
+<td style="text-align:left"><strong>不能比父类方法更严格</strong> (可以相同或更宽松)</td>
+<td style="text-align:left"><strong>没有限制</strong> (可以任意)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>抛出异常</strong></td>
+<td style="text-align:left"><strong>可以抛出相同的异常、子类异常或不抛出</strong>；<strong>不能抛出新的或更宽泛的检查型异常</strong></td>
+<td style="text-align:left"><strong>没有限制</strong> (可以抛出不同的异常)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>静态性</strong></td>
+<td style="text-align:left"><strong>不能重写静态方法</strong> (只能隐藏)</td>
+<td style="text-align:left"><strong>可以重载静态方法</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>调用时机</strong></td>
+<td style="text-align:left"><strong>运行时决定</strong> (基于对象的实际类型 - 动态绑定)</td>
+<td style="text-align:left"><strong>编译时决定</strong> (基于引用类型和参数 - 静态绑定)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>@Override</code>注解</strong></td>
+<td style="text-align:left"><strong>强烈建议使用</strong> (编译器检查是否符合重写规则)</td>
+<td style="text-align:left"><strong>不能使用</strong> (语法错误)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>继承关系</strong></td>
+<td style="text-align:left"><strong>必须存在于父子类之间</strong></td>
+<td style="text-align:left"><strong>不要求继承关系</strong> (同一个类内即可)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>核心多态性</strong></td>
+<td style="text-align:left"><strong>运行时多态 (动态多态)</strong></td>
+<td style="text-align:left"><strong>编译时多态 (静态多态)</strong></td>
+</tr>
+</tbody>
+</table>
+<br>
+<h1>8.构造器的执行</h1>
+<p>子类一定要先执行父类或更祖宗的无参构造器！若父类手动给出有参构造器，但没有补无参构造器，子类则会报错</p>
+<br>
+<h1>9.静态代码块与代码块执行顺序</h1>
+<p>在VM中加载*.class*</p>
+<p>①静态代码块/静态属性初始化</p>
+<p>②普通代码块/普通属性初始化</p>
+<p>③类中的构造方法</p>
+<p>④继承关系中：父类静态代码块&gt;子类静态代码块&gt;父类普通代码块&gt;父类构造方法&gt;子类普通代码块&gt;子类构造方法</p>
+<p>⑤实例方法和静态方法(非静态代码块)，不会被VM自动执行，只有被调用时执行</p>
+<br>
+<h1>10.多态</h1>
+<p>一个方法不同实现，其好处：</p>
+<p>①用统一的方法调用不同对象的特定行为</p>
+<p>②动态扩展功能：子类重写父类方法，做到同一方法，不同实现</p>
+<br>
+<h1>11.抽象</h1>
+<p>①抽象类不能被实例化</p>
+<p>②继承抽象类的子类必须实现父类中的抽象方法，否则也必须被定义为抽象类</p>
+<p>③有抽象方法一定是抽象类，抽象类中不一定要有抽象方法</p>
+<p>④抽象方法不能用<em>final</em>修饰</p>
+<p>⑤抽象方法不能被<em>static</em>修饰，因为<em>static</em>属于类，非对象，而抽象方法实现多态，不同对象实现方法不一样</p>
+<p>⑥抽象方法不能被<em>private</em>修饰，因为<em>private</em>只能在父类的内部使用，而抽象方法需要在子类中被重写</p>
+<p>⑦抽象类不能被实例化，但抽象类有构造器，用于初始化抽象类字段，为子类构造器提供基础</p>
+<br>
+<h1>12.接口</h1>
+<p>①对外提供一组公共行为规范的标准，在Java中是一个抽象类型，非类，是抽象方法的集合，也无法被实例化，但可以被实现</p>
+<p>②一个实现接口的类，如果没有实现接口中的所有方法，就必须声明为抽象类</p>
+<p>③接口是隐式抽象，其访问修饰符只能是<em>public</em>或<em>default</em>，<em>abstract</em>关键字可以省略</p>
+<pre><code class="language-java">public abstract interface A{}; //√
+public interface A{}; //√
+</code></pre>
+<p>④接口中的方法也是隐式抽象，其修饰符只能是<em>public abstract</em>，<em>public</em>和<em>abstract</em>关键字都可以省略</p>
+<pre><code class="language-java">public interface A{
+    public abstract void method1(); //√
+    void method2(); //√
+}
+</code></pre>
+<p>⑤接口中的变量会被隐式定义为<em>public static final</em>，<em>public</em>、<em>static</em>和<em>final</em>关键字都可以被省略</p>
+<pre><code class="language-java">public interface A{
+	public static final Integer VAR_1 = 10; //√
+    Integer VAR_2 = 10; //√
+}
+</code></pre>
+<p>⑥JDK8之后，用<em>default</em>修饰可以在接口中添加一个有实现的默认方法，它也可以被子类重写，但如果没有被子类重写，则使用这个有实现的默认方法，默认方法会默认加上<em>public</em>修饰符，且只有使用接口的(实现类)子类对象调用，被多个(实现类)子类共享</p>
+<pre><code class="language-java">public interface MyInterf{
+    default void defMethod(){
+		System.out.println("有实现的默认方法");        
+    }
+}
+</code></pre>
+<p>⑦JDK8之后，用<em>static</em>修饰可以在接口中添加一个属于接口的可以直接用接口调用的静态方法，且它不能被子类重写</p>
+<pre><code class="language-java">public interface MyInterf{
+    static void staMethod(){
+		System.out.println("属于接口的静态方法");        
+    }
+}
+</code></pre>
+<p>⑧JDK9之后，用<em>private</em>定义私有方法，以减少多个默认方法的重复逻辑，但因为私有，所以只能接口内自己调用</p>
+<pre><code class="language-java">public interface MyInterf{
+    default void defMethod1(){
+		//System.out.println("有实现的默认方法1");
+        commonMethod();
+    }
+    default void defMethod2(){
+		//System.out.println("有实现的默认方法2");
+        commonMethod();
+    }
+    private void commonMethod(){
+        System.out.println("通用方法");
+    }
+}
+</code></pre>
+<p>⑨JDK17之后，用<em>sealed</em>密封一个类或者接口，再用<em>permits</em>列出所有允许继承或实现的子类，并用<em>non-sealed</em>解封</p>
+<pre><code class="language-java">//密封继承
+public abstract sealed class Animal permits Dog,Cat{
+    //...
+}
+//密封实现
+public sealed interface IRun permits Bus,Car{
+    //...
+}
+//解封
+public non-sealed class Bus implements IRun{
+    //...
+}
+</code></pre>
+<br>
+<h1>13.数组</h1>
+<p>①存放相同类型的元素</p>
+<p>②空间连续的，且定长的</p>
+<p>③每个空间有自己的编号，起始位置编号为0，即数组的下标</p>
+<p>④格式：<code>T[] 数组名 = new T[]</code></p>
+<pre><code class="language-java">public class demo{
+    public static void main(String[] args){
+        double[] b = {1.0，2.0，3.0};
+        //普通for循环遍历，取的是地址
+        for(int i = 0;i&lt;b.length;i++){
+            b[i] *= 10; //b中的值改变了
+        }
+        for(int i = b.length -1;i&gt;=0;i--){
+            System.out.println(b[i]);
+		}
+        //增强for循环遍历，从b中取所有值作e，非地址
+		for(double e : b){
+    		e *= 10; //b中的原始值并没有改变
+            //System.out.println(e);
+		}
+        for(double e : b){
+            System.out.println(e);
+        }
+    }
+}
+</code></pre>
+<br>
+<h1>14.ArrayList动态数组</h1>
+<p>①动态数组，可根据需求自动扩展或缩小</p>
+<p>②格式：<code>ArrayList&lt;T&gt; 数组名 = new ArrayList&lt;&gt;()</code>，T为引用类型</p>
+<p>③ArrayList的用法：</p>
+<pre><code class="language-java">public class demo{
+    public static void main(String[] args){
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;(); //size=0
+        a.add(1); //插入1进数组a，长度+1,size=1
+        a.add(10); //插入10进数组a，长度又+1，size=2
+        //a.get(2); //获取值错误，下标越界，没有为2的下标
+        a.add(1,20); //插入20在下标为1的地址，长度又+1，size=3，且原本下标为1的10向后进一位变到下标为2的位置
+        a.set(1,30); //修改下标为1的元素的值为30
+        a.remove(1); //按下标删除，删掉下标为1的元素20，长度-1，size=2，且原本下标为2的10向前退一位变到下标为1的位置，若想删除删掉对象为1的元素，得进行装箱处理a.remove(Integer.valueOf(1))
+        ArrayList&lt;String&gt; b = new ArrayList&lt;&gt;(); //size=0
+        b.add("A"); //添加“A”进数组b，长度+1，size=1
+        b.add("B"); //添加“B”进数组b，长度又+1，size=2
+        b.remove("B"); //按对象删除，删掉对象为“B”的元素，长度-1，size=1
+    }
+}
+</code></pre>
+<hr>
+<pre><code class="language-java">public class demo{
+    public static void main(String[] args){
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;(); //size=0，这size就是整个数组的长度
+        a.add(1); //插入1进数组a，长度+1,size=1
+        a.add(10); //插入10进数组a，长度又+1，size=2
+		a.addAll(List.of(10,20,30,40,50)); //将这个集合加到a现有集合后面
+        int k = a.indexOf(10); //查找第一次出现10的下标位置k
+        List&lt;Integer&gt; a1 = a.subList(k,a.size()); //截取从下标位置k开始到下标位置为整个数组的长度-1(即.size()方法)的数组作为a1
+        for(int i =0;i&lt;a.size();i++){
+            if(a.contains(30)){ //判断是否存在元素为30
+                a.remove(i); //从i=0开始删
+            }
+        }
+        for(int x: a){
+			System.out.println(x); //10,20,40,50            
+        }
+    }
+}
+</code></pre>
+<p>④ArrayList扩容机制：</p>
+<ol>
+<li>
+<p>初始容量默认为10</p>
+</li>
+<li>
+<p>当size超过当前容量时扩容</p>
+</li>
+<li>
+<p>默认增长因子为1.5倍，所以每次扩容为原来的1.5倍</p>
+</li>
+<li>
+<p>扩容策略：</p>
+<ul>
+<li>创建新数组：扩容1.5倍</li>
+<li>复制元素：旧的复制到新的</li>
+<li>更新引用：内部数组更新为新数组，若判断已经达到最大值，将不再扩容</li>
+</ul>
+</li>
+</ol>
+<br>
+<h1>15.二维数组(不常用)</h1>
+<p>格式：<code>T[][] 数组名 = new T[R][C]</code></p>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+		int[ ][ ] array1 = new int[2][3];
+        int[ ][ ] array2 = new int[ ][ ]{{1,2,3},{4,5,6}};
+        int[ ][ ] array3 ={{1,2,3},{4,5,6}};
+        int[ ][ ] array4 = new int[2][ ]; //列可以不写，由元素实际长度决定
+        int[] a = {10,11,12};
+        int[] b = {20,21,22,23};
+        array4[0] = a;
+        array4[1] = b;
+        array1[0] = a;
+        array1[1] = b; //√
+        for(int i = 0;i&lt;array4.length;i++){
+            for(int j = 0;j&lt;array4.length;j++){    //i:0 j:0-&gt;3----i:2 j:3
+                System.out.print(array4[i][j]+"\t");
+            }
+        }
+        System.out.println();
+     }
+}
+</code></pre>
+<br>
+<h1>16.Arrays类(操作数组)</h1>
+<p>所有方法都是静态方法，方便使用方法调用数组，用法：</p>
+<ul>
+<li><code>Arrays.toString(Object[] a,Object key)</code> 将数组转换成<em>String</em>类型输出</li>
+<li><code>Arrays.deepToString(Object[][] a,Object key)</code> 打印多维数组</li>
+<li><code>Arrays.sort(Object[] a)</code> 对指定数组元素升序排列</li>
+<li><code>Arrays.equals(long[] a1,long[] a2)</code> 判断指定的两个<em>long</em>型数组是否相等</li>
+<li><code>Arrays.fill(int[] a,int val)</code> 将指定的<em>int</em>值分配给指定<em>int</em>型数组指定范围内的每一个元素</li>
+<li><code>Arrays.binarySearch(Object[] a,Object key)</code> 用二分查找在给定数组中搜寻查找对象，但调用前数组需排序好</li>
+</ul>
+<br>
+<h1>17.List集合</h1>
+<ol>
+<li>
+<p>List接口特点：</p>
+<ul>
+<li>有序性：按照插入的顺序存储</li>
+<li>允许重复：允许存储重复的元素</li>
+<li>索引访问：提供了用索引访问的方法，如get(int index)</li>
+</ul>
+</li>
+<li>
+<p>List接口常用实现类：</p>
+<ul>
+<li>
+<p>ArrayList类：随机访问快，插入、删除慢</p>
+</li>
+<li>
+<p>LinkedList类：插入、删除快，随机访问慢(链表)</p>
+</li>
+<li>
+<p>Vector类：线程安全，同步开销，性能低</p>
+</li>
+<li>
+<p>Stack类：继承Vector类，多些栈操作(后进先出)的方法</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>List是Collection接口的子接口，拥有Collection所有方法外，还有一些对索引操作的方法</p>
+<ul>
+<li><code>void add(int index, E element);</code> 将元素element插入到List集合的index处；</li>
+<li><code>boolean addAll(int index, Collection&lt;? extends E&gt; c);</code> 将集合c所有的元素都插入到List集合的index起始处；</li>
+<li><code>E remove(int index);</code> 移除并返回index处的元素；</li>
+<li><code>int indexOf(Object o);</code> 返回对象o在List集合中第一次出现的位置索引；</li>
+<li><code>int lastIndexOf(Object o);</code> 返回对象o在List集合中最后一次出现的位置索引；</li>
+<li><code>E set(int index, E element);</code> 将index索引处的元素替换为新的element对象，并<code>返回被替换的旧元素</code>；</li>
+<li><code>E get(int index);</code> 返回集合index索引处的对象；</li>
+<li><code>List&lt;E&gt; subList(int fromIndex, int toIndex);</code> 返回从索引fromIndex（包含）到索引toIndex（不包含）所有元素组成的子集合；</li>
+<li><code>void sort(Comparator&lt;? super E&gt; c)</code> 根据Comparator参数对List集合元素进行排序；</li>
+<li><code>void replaceAll(UnaryOperator&lt;E&gt; operator)</code> 根据operator指定的计算规则重新设置集合的所有元素。</li>
+<li><code>ListIterator&lt;E&gt; listIterator();</code> 返回一个ListIterator对象，该接口继承了Iterator接口，在Iterator接口基础上增加了以下方法，具有向前迭代功能且可以增加元素:<br>
+<code>bookean hasPrevious()</code> 返回迭代器关联的集合是否还有上一个元素；<br>
+<code>E previous();</code> 返回迭代器上一个元素；<br>
+<code>void add(E e);</code>在指定位置插入元素；</li>
+</ul>
+<br>
+<h1>18.Set集合</h1>
+<ol>
+<li>
+<p>set接口特点：</p>
+<ul>
+<li>不允许重复元素(去重复，核心是*equals()*方法)
+<ul>
+<li>equals(Object obj)：这是Object类的方法，默认实现是比较两个对象的内存地址，但可以被重写</li>
+<li>==运算符：比较两个对象的内存地址是否相同，如果两个引用指向同一个对象实例，则<em>true</em></li>
+<li>hashCode()：该方法返回对象的哈希码(整数值)，用于快速比较，如果两个对象相等(用<em>equals</em>)，则应该有相同的哈希码</li>
+</ul>
+</li>
+<li>大多数实现不保证元素顺序(除了<em>LinkedHashSet</em>和<em>TreeSet</em>)</li>
+</ul>
+</li>
+<li>
+<p>set实现类：</p>
+<ul>
+<li>
+<p>HashSet，基于哈希表的Set实现，高性能，快速查找、添加、删除</p>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+	Set&lt;String&gt; hashSet = new HashSet&lt;&gt;();
+    hashSet.add("apple");
+    hashSet.add("banana");
+    hashSet.add("null"); //允许一个null元素
+    System.out.print(hashSet); //不保证顺序，所以不能用普通for循环靠索引访问
+    //增强for循环取值
+    for(String s; hashSet){
+        System.out.print(s);
+	}
+}
+</code></pre>
+<hr>
+</li>
+<li>
+<p>LinkedHashSet，继承HashSet，有双向链表来记录插入顺序</p>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+	LinkedHashSet&lt;String&gt; hashSet = new LinkedHashSet&lt;&gt;();
+    hashSet.add("apple");
+    hashSet.add("apple");
+    hashSet.add("banana");
+    hashSet.add("null"); //允许一个null元素
+    System.out.print(hashSet); //有序且去重
+    //增强for循环取值
+    for(String s; hashSet){
+        System.out.print(s);
+	}
+}
+</code></pre>
+<hr>
+</li>
+<li>
+<p>TreeSet，实现SortedSet接口，底层使用红黑树结构，保证对数级别的性能</p>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+	Set&lt;String&gt; hashSet = new TreeSet&lt;&gt;();
+    hashSet.add("a");
+    hashSet.add("c");
+    hashSet.add("c");
+    hashSet.add("b");
+    System.out.print(hashSet); //按自然数排序
+    //增强for循环取值
+    for(String s; hashSet){
+        System.out.print(s);
+	}
+}
+</code></pre>
+<br>
+<h1>19.Map集合(标识作用)</h1>
+<ul>
+<li>Map顶层接口=Entry接口+Map自身接口方法
+<ul>
+<li>Entry接口={Key: Value}</li>
+<li>Map其子接口：
+<ul>
+<li>HashMap：有个<em>LinkedHashMap</em>子类，记录了插入顺序，但效率比<em>HashMap</em>低</li>
+<li>HashTable：同步的，线程安全的，且不允许<em>null</em>作为<em>Key</em>和<em>Value</em></li>
+<li>TreeMap：基于红黑树，自然顺序排序</li>
+</ul>
+</li>
+<li>Map其常用子集合：
+<ul>
+<li>keySet：遍历所有<em>Key</em></li>
+<li>values：遍历所有<em>Value</em></li>
+<li>entrySet：遍历所有<em>K-V</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+		Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;(); //Key为字符串，Value为整型
+        map.put("red",1);
+        map.put("blue",2);
+        map.put("green",3);
+        System.out.println(map); //无序输出
+        
+        int x = map.get("blue"); //根据Key查找
+        System.out.println(X); //输出2
+        //keySet遍历所有Key，性能较差，但是方便
+        for(String key : map.keySet()){ //从所有Key中取Key
+            System.out.println(key + ":" + map.get(key)); //得到所有Key后，再通过Key取得所有Value
+        }
+        //entrySet遍历所有K-V，效率最高，推荐使用
+        for(Map.Entry&lt;String,Integer&gt; entry : map.entrySet()){ //从所有K-V中取K-V
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+        
+        //查单词重复次数
+        String[] words = {"the","day","is","sunny","the","the","sunny","is"}; //单词数组
+        Map&lt;String,Integer&gt; times = new HashMap&lt;&gt;();
+        for(String word : words){ //从单词数组中遍历所有单词作为word也是Key
+            if(times.containsKey(word)){ //判断word/Key是否出现
+                int count = times.get(word) + 1; 
+                times.put(word,count); //如果单词已经出现过一次，则Value+1
+            }else {
+                times.put(word,1); //单词没有出现过，就Value=1
+            }
+        }
+        System.out.println(times);
+	}
+}
+</code></pre>
+<br>
+<h1>20.集合排序</h1>
+<ol>
+<li>
+<p><code>Collections.sort()</code>方法：</p>
+<ul>
+<li>Java集合框架的静态方法，属于接口，不能用类调用</li>
+<li>只传入待排序的集合，则默认自然排序(升序)</li>
+<li>传入待排序的集合和比较器，则按比较器规则排序，可用于对象排序(见 <em>3.Comparator<t>接口</t></em> )</li>
+</ul>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+		List&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
+        numbers.add(3);
+        numbers.add(1);
+        numbers.add(4);
+        numbers.add(2);
+        numbers.add(5);
+        Collections.reverse(numbers);  //反转
+        System.out.println(numbers); //5,2,4,1,3
+        Collections.sort(numbers);  //升序
+        System.out.println(numbers); //1，2，3，4，5
+	}
+}
+</code></pre>
+</li>
+<li>
+<p>Comparable<t>接口</t></p>
+<ul>
+<li>String等八种封装类已经实现了Comparable接口，所以<code>Collections.sort()</code>可以直接对基本数据类型数据升序</li>
+<li>但要对象排序，就得重写Comparable接口的<code>compareTo(T o)</code>方法</li>
+</ul>
+<pre><code class="language-java">@Data
+public class Student implements Comparable&lt;Student&gt;{
+    private Integer sno;
+    private String sname;
+    private Double score;
+    public Student(Integer sno,String sname,Double score){
+        this.sno = sno;
+        this.sname = sname;
+        this.score = score;
+    }
+    @Override
+    public String toString(){
+        return "Student{" +
+            "sno" + sno +
+            ", sname='" + sname + '\'' +
+            ", score=" + score + 
+            '}';
+    }
+    //重写compareTo(T o)方法
+    @Override
+    public int compareTo(Student o){
+        if(this.sno &gt; o.sno){
+            return 1;  //大于0
+        }else if(this.sno &lt; o.sno){
+            return -1; //小于0
+        } 
+        return 0; //等于0
+    }
+/*
+ 我们添加了4个Student对象，按照学号（sno）进行比较，添加顺序是：1002, 1003, 1004, 1001
+ 插入过程：
+   - 首先添加1002（作为根节点）
+   - 添加1003：与1002比较，1003&gt;1002，所以放在1002的右子树
+   - 添加1004：先与1002比较（1004&gt;1002），转向右子树（1003），再与1003比较（1004&gt;1003），所以放在1003的右子树
+   - 添加1001：与1002比较，1001&lt;1002，所以放在1002的左子树
+   最终，树的结构如下：
+        1002
+       /    \
+    1001    1003
+              \
+               1004
+ 但是，TreeSet在遍历时是按照二叉搜索树的中序遍历（左-根-右），所以遍历顺序是：1001 -&gt; 1002 -&gt; 1003 -&gt; 1004。
+ 因此，输出顺序为：
+   Student{sno=1001, sname='lucy', score=74.0}
+   Student{sno=1002, sname='jack', score=88.0}
+   Student{sno=1003, sname='rose', score=65.5}
+   Student{sno=1004, sname='lily', score=89.0}
+   
+ 注意：虽然我们添加的顺序是1002、1003、1004、1001，但输出时却是按学号升序排列，这就是TreeSet自动排序的效果。
+ 另外，如果两个对象的compareTo方法返回0，TreeSet会认为它们是相等的，不会添加新对象。例如，如果试图添加一个学号相同的Student对象，它将被视为重复元素，不会被加入集合。
+
+关键特性
+1. 动态排序：每次调用add()都会触发compareTo()比较，立即调整树结构保持有序
+2. 去重机制：当compareTo()返回0时，视为逻辑相等（即使对象地址不同），拒绝插入
+3. 性能保障：红黑树保证插入/查找/删除的时间复杂度为O(log n)，远优于线性排序。
+*/
+}
+</code></pre>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+		Set&lt;Student&gt; students = new TreeSet&lt;&gt;(); //将Student对象存放在Set集合
+     // List&lt;Student&gt; students = new ArrayList&lt;&gt;(); //错误，因为ArrayList没有TreeSet里的自带排序功能，重写Comparable接口的compareTo(T o)方法后，还需要调用Collections.sort(students)方法才能实现排序 
+        students.add(new Student(1002,"jack",88.0));
+        students.add(new Student(1003,"rose",65.5));
+        students.add(new Student(1004,"lily",89.0));
+        students.add(new Student(1001,"lucy",74.0));
+        //展示排序后的stu
+        for(Student stu ; students){
+            System.out.println(stu.toString());
+		}
+	}
+}
+</code></pre>
+</li>
+<li>
+<p>Comparator<t>接口</t></p>
+<ul>
+<li>需要创建单独排序类(比较器)，然后重写<code>compare(T o1,T o2)</code>方法或用匿名内部类实现</li>
+</ul>
+<pre><code class="language-java">//商品类
+@Data
+public class Sku{
+    private String name;
+    private Integer num;
+    private Double price;
+    @Override
+    public String toString(){
+        return "Sku{" +
+            "name" + name +
+            ", num='" + num + '\'' +
+            ", price=" + price + 
+            '}';
+    }
+}
+</code></pre>
+<pre><code class="language-java">//比较器SkuComparator
+public class SkuComparator implements Comparator&lt;Sku&gt;{
+	public final static String ASC = "asc";
+    public final static String DEC = "dec";
+    private String sortField; //排序字段
+    private String sort; //升序或降序
+    //构造器1：只有字段，无选择
+    public SkuComparator(String sortField){
+        this.sortField = sortField;
+        this.sort = ASC; //默认升序
+    }
+    //构造器2：自主选择升序类型
+    public SkuComparator(String sortField,String sort){
+        this.sortField = sortField;
+        this.sort = sort;
+    }
+    //重写compare(T o1,T o2)方法
+    @Override
+    public int compare(Sku o1,K,Sku o2){
+        switch(sortField){
+            case "name":
+                if(this.sort.equals(ASC)){
+                    return o1.getName().compareTo(o2.getName());
+                }else{
+                    return o2.getName().compareTo(o1.getName());
+                }
+            case "num":
+                if(this.sort.equals(ASC)){
+                    return o1.getNum()-o2.getNum();
+                }else{
+                    return o2.getNum()-o1.getNum();
+                }
+            case "price":
+                if(this.sort.equals(ASC)){
+                    return (int)(o1.getPrice()-o2.getPrice());
+                }else{
+                    return (int)(o2.getPrice()-o1.getPrice());
+                }
+            default: return 0;
+        }
+	}
+}
+</code></pre>
+<pre><code class="language-java">//测试
+public class demo{
+    public static void main(String args[]){
+        //商品数量升序
+		Set&lt;Sku&gt; skus = new TreeSet&lt;&gt;(new SkuComparator("num"));
+        skus.add(new Sku("A",100,200.0));
+        skus.add(new Sku("C",50,1200.0));
+        skus.add(new Sku("D",150,120.0));
+        skus.add(new Sku("B",200,1000.0));
+        System.out.println(skus);
+        //价格降序
+		Set&lt;Sku&gt; skus1 = new TreeSet&lt;&gt;(new SkuComparator("price",SkuComparator.DEC));
+        skus1.add(new Sku("A",100,200.0));
+        skus1.add(new Sku("C",50,1200.0));
+        skus1.add(new Sku("D",150,120.0));
+        skus1.add(new Sku("B",200,1000.0));
+        System.out.println(skus1);
+        //List集合价格降序
+        SkuComparator comparator2 = new SkuComparator("price",SkuComparator.DEC);
+		List&lt;Sku&gt; skus2 = new ArrayList&lt;&gt;();
+        skus2.add(new Sku("A",100,200.0));
+        skus2.add(new Sku("C",50,1200.0));
+        skus2.add(new Sku("D",150,120.0));
+        skus2.add(new Sku("B",200,1000.0));
+        Collections.sort(skus2,comparator2); //必须加入比较器comparator2!
+        System.out.println(skus2);
+	}
+}
+</code></pre>
+<pre><code class="language-java">//匿名内部类，无比较器
+public class demo{
+    public static void main(String args[]){
+		List&lt;Sku&gt; skus = new ArrayList&lt;&gt;();
+        skus.add(new Sku("A",100,200.0));
+        skus.add(new Sku("C",50,1200.0));
+        skus.add(new Sku("D",150,120.0));
+        skus.add(new Sku("B",200,1000.0));
+        //直接new一个Comparator&lt;T&gt;接口，重写compare(T o1,T o2)方法
+        Collections.sort(skus,new Comparator&lt;Sku&gt;(){
+            @Override
+            public int compare(Sku o1,K,Sku o2){
+                return (int)(o1.getPrice()-o2.getPrice());
+            }
+        });
+        System.out.println(skus);
+	}
+}
+</code></pre>
+<br>
+</li>
+</ol>
+<h1>21.内部类</h1>
+<p>类的五大成分(成员变量、构造器、方法、代码块、内部类)之一</p>
+<ol>
+<li>
+<p>成员内部类：定义在外部类成员位上，与成员变量/方法平级，调用成员内部类的对象时要：</p>
+<pre><code class="language-java">Train train = new Train(); //创建类实例对象train
+Train.Seat seat = train.getInnerInstance(); //把实例对象train调用的getInnerInstance()方法赋值给成员内部类Seat创建的seat
+seat.occpuy(); //用seat调用成员内部类Seat方法occpuy()
+</code></pre>
+</li>
+<li>
+<p>静态内部类：</p>
+<ul>
+<li>定义在外部类成员位上，被<em>static</em>修饰，属于整个外部类，所以没有外部类实例的<em>this</em>引用，它只能访问外部类的静态成员</li>
+<li>若外部类的成员和成员内部类的成员同名，则遵循就近原则，在成员内部类中访问的是自己成员内部类中的成员，如想访问外部类的同名成员，则用<em>外部类名.静态成员名</em></li>
+<li>若要在其他类中创建静态内部类的实例，则要保证这个静态内部类的在其他类中是可见的</li>
+<li>静态内部类在编译后生成一个独立的类文件，其命名通常为<em>外部类名$静态内部类名.class</em></li>
+</ul>
+</li>
+<li>
+<p>局部内部类：</p>
+<ul>
+<li>定义在一个局部位置，如方法、方法的参数、构造器或代码块内部，类似方法的局部变量，作用域仅限自己的代码块中</li>
+<li>可以直接访问外部类的所有成员，也可以通过<em>this</em>引用访问外部类的成员</li>
+</ul>
+<pre><code class="language-java">public class OuterClass{
+    private String outerField = "outer";
+    public void fun(){
+        //局部内部类
+        class LocalInnerClass{
+            public void foo(){
+                System.out.println(outerField); //直接访问
+                System.out.println(OuterClass.this.outerField); //通过外部类的this引用访问
+            }
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>匿名内部类：没有名字的内部类(见 <em>3.Comparator<t>接口</t></em>)</p>
+<br>
+</li>
+</ol>
+<h1>22.枚举类</h1>
+<p>定义一组固定命名的常量，其构造器是私有的，不能创建对象，每个常量就是一个实例</p>
+<pre><code class="language-java">//创建
+public  enum ColorE{
+    RED("红色",1),
+    BLUE("蓝色",2),
+    YELLOW("黄色",3);
+    private String desc;
+    private Integer value;
+    //自定义构造器
+    ColorE(String desc,Integer value){
+        this.desc = desc;
+        this.value = value;
+    }
+    
+}
+//返回名称
+System.out.println(ColorE.RED.name());
+//返回枚举对象的序号
+System.out.println(ColorE.RED.ordinal()); //输出0
+//返回名称对应的枚举对象
+System.out.println(ColorE.valueOf("RED")); //输出RED
+</code></pre>
+<br>
+<h1>23.泛型</h1>
+<ol>
+<li>上界约束：用<em>extends</em>，表示该泛型必须是其子类或实现了某个接口，没指定则默认约束是<em>Object</em></li>
+</ol>
+<p><code>&lt;T extends Number&gt; //类型参数T必须是Number类型或其子类</code></p>
+<ol start="2">
+<li>下界约束：用<em>super</em>，表示该泛型必须是其超类或其接口的实现类</li>
+</ol>
+<p><code>&lt;T super Integer&gt; //类型参数T必须是Integer类型或者其父类</code></p>
+<br>
+<h1>24.函数式接口与Lambda表达式</h1>
+<ol>
+<li>
+<p>函数式接口：只有一个抽象方法，可用于匿名；只是一个形式，只要有返回值即可</p>
+</li>
+<li>
+<p>Lambda表达式：</p>
+<ul>
+<li>只有函数式接口的变量或者函数式接口才能赋值为Lambda表达式</li>
+<li>形参类型可以全部不写</li>
+<li>只有一个形参，类型可不写，<code>()</code>也可以不写</li>
+<li>若Lambda表达式方法体只有一行代码，则可不写<code>{}</code>和<code>;</code>，若这行是<code>return</code>语句，则也不写<code>return</code></li>
+</ul>
+<pre><code class="language-java">//函数式接口
+public Double compute(Double x,Double y){
+    return x*y;
+}
+//Lambda表达式
+(x,y)-&gt;x*y
+//Lambda方法引用
+Function&lt;String,Integer&gt; strToInt = s -&gt; Integer.parseInt(s);
+//方法引用运算符::
+Function&lt;String,Integer&gt; strToInt1 = Integer::parseInt;
+//引用String的无参构造器
+Function&lt;String,Integer&gt; strObj = (s) -&gt; new String(s);
+//用方法引用运算符
+Function&lt;String,Integer&gt; strObj1 = String::new;
+</code></pre>
+<br>
+<h1>25.内存管理机制</h1>
+<h3 id="25-1-Java内存区域">25.1 Java内存区域</h3>
+<ol>
+<li>方法区(元空间，一般放在堆里)
+<ul>
+<li>功能：用于存储类的结构信息
+<ul>
+<li>类的元数据(对数据的描述：全限定类名、父类名、接口列表等)：结构、方法、字段等</li>
+<li>常量池：编译时生成的字面常量、符号引用</li>
+<li>静态变量：因为静态变量属于类，所以随着类加载同时加载，所有实例共享</li>
+<li>JIT(即时编译器)编译后的机器代码</li>
+</ul>
+</li>
+<li>共享性：全局共享，所有线程都能访问</li>
+<li>生命周期：JVM启动时创建，JVM销毁时销毁</li>
+<li>避免内存溢出：使用本地内存，非JVM堆内存，避免了类的元数据过多而溢出</li>
+</ul>
+</li>
+<li>堆(Heap)
+<ul>
+<li>功能：Java最大的内存区域，用于存放所有对象实例(new)和引用数据类型(类、接口、数组、集合)</li>
+<li>共享性：所有线程共享，需要同步机制管理堆内存的访问</li>
+<li>生命周期：不会被释放，当对象不再被引用时，GC(垃圾收集器)会定期回收</li>
+<li>内存泄漏(Memory Leak)：内存没有正确释放，导致GC无法回收</li>
+<li>内存溢出：<code>OutOfMemoryError</code>错误，因为内存泄漏或内存设置太小导致的，用<code>-Xms</code>和<code>-Xmx</code>检查最小/最大堆空间</li>
+</ul>
+</li>
+<li>栈(Stack)
+<ul>
+<li>功能：每个线程创建一个虚拟机栈，用于存储局部变量表、操作数栈、动态链接、方法出口(返回值)等信息</li>
+<li>独立性：每个线程的栈是隔离的</li>
+<li>生命周期：线程创建时创建，线程结束时销毁(自动释放)</li>
+<li>过程：一个方法创建一个栈帧，先进压在底部，当前操作数栈计算后，将得到的帧数据压入发起调用的操作数栈(有return的情况)，若遇到异常则查表，表中没有处理方法则结束当前方法，抛出异常</li>
+<li>调整栈：<code>Java -Xss 1m demo_1</code> (demo_1设置为1MB栈大小)</li>
+</ul>
+</li>
+<li>程序计数器(Program Counter Register)
+<ul>
+<li>功能：用于记录程序下一条要执行的字节码行号</li>
+<li>独立性：每个线程的PCR互不干扰</li>
+</ul>
+</li>
+<li>本地方法栈
+<ul>
+<li>功能：用于执行本地方法(非Java语言)，通过JNI(Java Native Interface)与Java代码交互</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3 id="25-2-String类的一些方法">25.2 String类的一些方法</h3>
+<ol>
+<li>
+<p>String类</p>
+<p>一个String对象最多存储2^32-1个字节(占4GB)的文本内容，它的内容是定长的，不可改变且能共享</p>
+<pre><code class="language-java">//String源码
+public final class String{
+    private final byte[] value;
+    private final byte coder;
+}
+</code></pre>
+</li>
+<li>
+<p>创建字符串</p>
+<pre><code class="language-java">//常用1
+String str = "Hello";
+//常用2
+String str = new String("Hello");
+//字符数组构造
+char[] array = {'a','b','c'};
+String str = new String(array);
+//提取数组中一部分创建
+char[] array = {'a','b','c','d','e'};
+String str = new String(array,1,3); //bcd
+</code></pre>
+</li>
+<li>
+<p>比较字符串</p>
+<pre><code class="language-java">String str1 = "hello";
+String str2 = "Hello";
+String str3 String str = new String("Hello");= "hell";
+String str4 = new String("hello");
+System.out.println(str1 == str4); //false，new后开辟新的地址
+System.out.println(str1.equals(str4)); //true，String类重写了equals方法，内容相同即相同
+System.out.println(str1.compareTo(str3)); //1，compareTo方法按字典依次比较，如果字符不等则返回两个字符的大小差值，如果前几个都相等，只是长度不同，则返回两个字符串的长度差值
+System.out.println(str1.compareToIgnoreCase(str2)); //0，compareTo方法
+</code></pre>
+</li>
+<li>
+<p>查找字符串</p>
+<ul>
+<li><code>charAt(int index)</code>：返回index位置的字符，若index为负或越界，则抛出异常<code>IndexOutOfBoundsException</code></li>
+<li><code>indexOf(String str)</code>：返回str第一次出现的位置，没有则返回-1</li>
+<li><code>contains(String str)</code>：判断一个字符串是否包含另一个字符串</li>
+<li><code>startsWith(String str)</code>：判断前缀</li>
+<li><code>endsWith(String str)</code>：判断后缀</li>
+</ul>
+</li>
+<li>
+<p>拆分与连接字符串</p>
+<ul>
+<li><code>split()</code>方法：将字符串以指定格式全部拆分成字符串数组</li>
+<li><code>str1.concat(str2)</code>方法：将两个字符串连成一个字符串</li>
+<li><code>String.join("","",...)</code>方法：静态，将多个字符串以指定格式连成一个字符串</li>
+<li><code>+</code>：连接两个字符串，并传入新的地址</li>
+</ul>
+</li>
+<li>
+<p>截取字符串</p>
+<pre><code class="language-java">String str = "hello word";
+System.out.println(str.substring(2)); //llo word
+System.out.println(str.substring(2,8)); //llo wo
+</code></pre>
+</li>
+<li>
+<p>字符串去左右空格，留中间空格</p>
+<pre><code class="language-java">String str = " hello word ";
+System.out.println(str.trim()); //hello word
+</code></pre>
+</li>
+<li>
+<p>格式化字符串：<code>format</code>方法</p>
+</li>
+<li>
+<p>可变长度字符串类</p>
+<ul>
+<li>
+<p><code>StingBuilder</code>类：线程不安全，效率快，适用单线程</p>
+</li>
+<li>
+<p><code>StringBuffer</code>类：线程安全，效率低，适用多线程</p>
+<pre><code class="language-java">StringBuilder sb = new StirngBuilder("Hello");
+String s = "Hello";
+sb.append("WorldWaWa"); //HelloWorldWaWa，在Hello后面追加WorldWawa，原地址没变，还有预留位置
+sb.insert(0,"Ni:"); //Ni:HelloWorldWaWa，在下标为0的位置插入Ni:,原地址没变
+sb.insert(8," "); //Ni:Hello WorldWaWa，在下标为8-1的位置插入空格,原地址没变
+sb.delete(14,sb.length()); //Ni:Hello World，删除从下标14到sb.length()-1之间的字符
+System.out.println(sb.toString()); //"Ni:Hello World"，用toString()转换成String类型
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3 id="25-3-字符串常量池">25.3 字符串常量池</h3>
+<ul>
+<li>
+<p>字符串常量池属于常量池，放在方法区里，方法区一般又放在堆里，所以字符串常量是共享的，又因为String源码里value是用final修饰的，所以字符串常量是不可变的</p>
+</li>
+<li>
+<p>当常量池中已经存在一个与其值相同的字符串，则不会开辟空间来存储它，而是直接将地址赋值给这个新的字符串</p>
+</li>
+</ul>
+<pre><code class="language-java">String s1 = "abc";
+String s2 = "abc";
+System.out.println(s1==s2); //true，因为s1和s2都是常量池中的地址
+</code></pre>
+<ul>
+<li>如果是用new关键字创建的字符串，会分别在常量池和堆中创建对象，即常量池一个，堆一个；若常量池中已经存在，则只在堆里创建</li>
+</ul>
+<pre><code class="language-java">String s3 = new String("abc");
+String s4 = new String("abc");
+System.out.println(s3==s4); //false，因为s3和s4都是堆里的地址，虽然常量池中地址相同，但堆中不一样
+</code></pre>
+<ul>
+<li>String对象调用<code>intern()</code>方法时则是返回该对象常量池中的地址</li>
+</ul>
+<pre><code class="language-java">String s5 = new String("qwe");
+String s6 = "qwe";
+String s7 = s5.intern();
+System.out.println(s5==s6); //false，因为s5是堆里的地址，s6是常量池中的地址
+System.out.println(s6==s7); //true，因为s6和s7都是常量池中的地址
+</code></pre>
+<br>
+<h3 id="25-4-值传递与引用传递">25.4 值传递与引用传递</h3>
+<ol>
+<li>值传递：形参是基本数据类型，用实际参数的值初始化自己的存储单元，是和实际参数不同的栈，不影响实际参数</li>
+<li>引用传递：形参是引用数据类型，传的是地址，指向同一个地址空间，会影响实际参数</li>
+</ol>
+<br>
+<h3 id="25-5-可变参数">25.5 可变参数</h3>
+<hr>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+		int m = add(1,2);
+        int n = add(1,2,3);
+        int k = add(1,2,3,4,5);
+        System.out.println(String.format("m=%d,n=%d,k=%d",m,n,k));
+	}
+    static int add(int x,int... a){
+        int sum = 0;
+        for(int i=0;i&lt;a.length;i++){
+            sum += a[i];
+        }
+        return sum;
+    }
+}
+</code></pre>
+<hr>
+<p>注：①可变参数在方法内部被当作数组来处理</p>
+<p>​	②可变参数的实参可以是数组</p>
+<p>​	③一个方法只能有一个可变参数</p>
+<p>​	④可变参数可以和其他参数一起使用，但可变参数必须在末尾</p>
+<br>
+<h3 id="25-6-GC机制">25.6 GC机制</h3>
+<ol>
+<li>
+<p>新生代：堆内存中，存放新创建的对象</p>
+<ul>
+<li>
+<p>Young GC</p>
+</li>
+<li>
+<p>标记-清除算法：①所有对象放入<em>Eden</em>区，若<em>Eden</em>满了则标记需要的对象，放入<em>Survivor</em>区1，清空<em>Eden</em>区==&gt;②<em>Eden</em>区又满了则标记需要的对象，将该对象和<em>Survivor</em>区1中的对象放入<em>Survivor</em>区2中，清空<em>Eden</em>区和<em>Survivor</em>区1==&gt;③以此重复交换<em>Survivor</em>区1和<em>Survivor</em>区2</p>
+</li>
+</ul>
+</li>
+<li>
+<p>老年代：堆内存中，存放新时代中多次存活(默认15次，可修改上限)的对象</p>
+<ul>
+<li>
+<p>Full GC：</p>
+<p>①剩余存活的对象&gt;新生代的<em>Survivor</em>+老年代</p>
+<p>②空间分配担保失败</p>
+<p>③执行<code>System.gc()</code>时，但不一定立即触发</p>
+</li>
+</ul>
+</li>
+</ol>
+<br>
+<h1>26.递归</h1>
+<ol>
+<li>递归简洁，但性能消耗大，效率低，要求高性能情况下应用循环迭代</li>
+<li>递归两步骤
+<ul>
+<li>找递归终止条件</li>
+<li>把一个问题拆分成多个子问题，再调用自身处理子问题</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-java">public class demo{
+    static int f(int n){
+        //终止条件
+        if(n==1) return 1;
+        //调用自己
+        return n*f(n-1);
+    }
+    public static void main(String args[]){
+		int x = f(5);
+        System.out.println(x);
+	}
+}
+</code></pre>
+<pre><code class="language-java">//斐波那契数列
+//循环
+public class demo{
+    public static void main(String args[]){
+		int f1 = 1,f2 = 1;
+        System.out.println(f1);
+        System.out.println(f2);
+        for(int i =2;i&lt;20;i++){
+            int f3 = f1 + f2;
+            System.out.println(f3);
+            f1 = f2;
+            f2 = f3;
+        }
+	}
+}
+//数组
+public class demo{
+    public static void main(String args[]){
+		int[] f = new int[20];
+        f[0] = 1;
+        f[1] = 1;
+        for(int i =2;i&lt;20;i++){
+        	f[i] = f[i-1]+f[i-2];
+            System.out.println(f[i]);
+		}
+	}
+}
+//递归
+public class demo{
+    int f(int n){
+        //终止条件
+        if(n==1 || n==2) return 1;
+        //调用自己
+        return f(n-1)+f(n-2);
+    }
+    public static void main(String args[]){
+		int x = f(5);
+        System.out.println(x);
+	}
+}
+</code></pre>
+<br>
+<h1>27.反射</h1>
+<ol>
+<li>
+<p>机制：在运行状态下，动态获取任意一个类的属性、方法或任意一个对象的方法和属性</p>
+</li>
+<li>
+<p>原理：①在程序中创建对象(<code>new</code>)==&gt;②JVM到本地磁盘找需要加载的类(<code>Xxx.class</code>)==&gt;③通过类加载器<em>classLoader</em>加载到内存中，创建类对象，一个类有且仅有一个<em>class</em>对象,<em>class</em>对象中包含了类的信息==&gt;④在内存中创建对象空间</p>
+</li>
+<li>
+<p>类：</p>
+<p>①全限定类名：<code>包名.类名</code></p>
+<p>②Class类的加载：</p>
+<ul>
+<li>通过类名加载：<code>Class&lt;?&gt; xX = Class.forname(全限定类名)</code></li>
+<li>通过字节码文件加载(<strong>推荐使用</strong>)：<code>Class&lt;?&gt; xX = 类名.class</code></li>
+<li>通过类实例加载：<code>Class&lt;?&gt; xX = 类实例名.getClass()</code></li>
+</ul>
+<p>③Class类的常用方法：</p>
+<ul>
+<li>
+<p>创建类的实例(无参构造器，已过时)：<code>newInstance()</code></p>
+</li>
+<li>
+<p>获得类的加载器：<code>getClassLoader()</code></p>
+</li>
+<li>
+<p>获取类的包：<code>getPackage()</code></p>
+</li>
+<li>
+<p>获取类的名字：<code>getSimpleName()</code></p>
+</li>
+<li>
+<p>获取当前类父类的名字：<code>getSuperclass()</code></p>
+</li>
+<li>
+<p>获取当前类实现类或者接口：<code>getInterfaces()</code></p>
+</li>
+<li>
+<p>获取所有共有的属性对象：<code>getFields()</code></p>
+</li>
+<li>
+<p>获取某个共有的属性对象：<code>getField(String name)</code></p>
+</li>
+<li>
+<p>获取所有属性对象(包括私有)：<code>getDeclaredFields()</code></p>
+</li>
+<li>
+<p>获取某个属性对象(包括私有)：<code>getDeclaredField(String name)</code></p>
+</li>
+<li>
+<p>获取所有共有的方法(包括父类)：<code>getMethods()</code></p>
+</li>
+<li>
+<p>按名称和参数类型获取某个共有的方法：<code>getMethod()</code></p>
+</li>
+<li>
+<p>获取本类声明的所有方法(包括私有)：<code>getDeclaredMethods()</code></p>
+</li>
+<li>
+<p>按名称和参数类型获取本类声明的某个方法(包括私有)：<code>getDeclaredMethod()</code></p>
+</li>
+<li>
+<p>获取该类的所有的公有构造器：<code>getConstructors()</code></p>
+</li>
+<li>
+<p>获取该类中与类型参数匹配的公有构造器：<code>getConstructor(Class... &lt;?&gt; parameterTypes)</code></p>
+</li>
+<li>
+<p>获取该类的所有构造器：<code>getDeclaredConstructors</code></p>
+</li>
+<li>
+<p>获取该类中与类型参数匹配的构造器(包括私有)：<code>getDeclaredConstructor(Class... &lt;?&gt; parameterTypes)</code></p>
+</li>
+</ul>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]) throws Exception{
+        //1.加载Student类
+		Class&lt;?&gt; clazz = Student.class
+        //2.创建类实例
+        Object o = clazz.getDeclaredConstructor(String.class,String.class)
+            .newInstance("1001","李四");
+        //3.调用方法
+        System.out.println(o.toString());
+	}
+}
+</code></pre>
+<p>④Method类：反射中的一个内部类，用于表示类中的方法，通过Method类动态访问和修改类的方法</p>
+<ul>
+<li>调用方法：<code>invoke(Object obj,Object... args)</code></li>
+</ul>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]) throws Exception{
+        //1.加载Student类
+		Class&lt;?&gt; clazz = Student.class
+        //2.调用无参构造器，创建Student类实例
+        Object student = clazz.getDeclaredConstructor().newInstance();
+        //3.已知方法名，获取setId、setName、concat方法
+        Method setId = clazz.getDeclaredMethod("setId",String.class);
+        Method setName = clazz.getDeclaredMethod("setName",String.class);
+        Method concat = clazz.getDeclaredMethod("concat",Long.class,String.class);
+        //4.实例对象执行方法
+        setId.invoke(student,"1001");
+        setId.invoke(student,"李四");
+        String stuinfo = (String) concat.invoke(student,1002L,"李四")；
+        //5.输出
+        System.out.println(student.toString());
+        System.out.println(stuinfo);
+	}
+}
+</code></pre>
+<p>④Field类：反射中的一个内部类，用于表示类中的字段，通过Field类动态访问和修改类的字段</p>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]) throws Exception{
+        //1.加载Student类
+		Class&lt;?&gt; clazz = Student.class
+        //2.调用无参构造器，创建Student类实例
+        Object student = clazz.getDeclaredConstructor().newInstance();
+        //3.已知属性名，获取id、name属性
+        Field id = clazz.getDeclaredField("id");
+        Field name = clazz.getDeclaredField("name");
+        //4.给属性赋值
+        id.setAccessible(true); //解除属性的保护
+        id.set(student,"1001");
+        name.setAccessible(true); //解除属性的保护
+        name.set(student,"李四");
+        //5.输出
+        System.out.println(id.get(student)+"\t"+name.get(student));
+	}
+}
+</code></pre>
+</li>
+<li>
+<p>用法：</p>
+<p>①创建<code>test.properties</code>，在里面只写：</p>
+<pre><code class="language-properties">id:1001
+name:aaa
+</code></pre>
+<p>②通过反射动态获取实例对象属性：</p>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]) throws Exception{
+        //1.加载Student类
+		Class&lt;?&gt; clazz = Student.class
+        //创建Student类的实例
+        Object student = clazz.getDeclaredConstructor().newInstance(); 
+        //2.读取文件内容
+        File file = 
+            new File("E:\\java\\demo\\src\\main\\java\\com\\text\\test.properties");
+        FileInputStream in = new FileInputStream(file);
+        int c;
+        StringBuilder sb = new StringBuilder();
+        while ((c=in.read()) != -1){
+            sb.append((char)c);
+        }
+        System.out.println(sb.toString());
+        //3.分割文件内容
+        String[] lines = sb.toString().split("\r\n"); //将读取出的文件内容按回车、换行分割放入lines里
+        for(String line : lines){
+            String[] kv = line.split(":"); //从lines里读取每一个line按“：”进行分割再放入kv里
+            // System.out.println(kv[0]+"--"+kv[1]); //每次按“：”分割后的第一个和第二个之间用“--”连接
+            Field field = clazz.getDeclaredField(kv[0]); //根据属性名kv[0]的内容来获取属性field
+            field.setAccessible(true); //解除属性的保护
+            field.set(student,kv[1]); //给实例student的属性field赋值kv[1]
+        }
+			System.out.println(student.toString());
+	}
+}
+</code></pre>
+<p>通过反射动态获取实例对象方法：</p>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]) throws Exception{
+        //1.加载Student类
+		Class&lt;?&gt; clazz = Student.class
+        //创建Student类的实例
+        Object student = clazz.getDeclaredConstructor().newInstance(); 
+        //2.读取文件内容
+        File file = 
+            new File("E:\\java\\demo\\src\\main\\java\\com\\text\\test.properties");
+        FileInputStream in = new FileInputStream(file);
+        int c;
+        StringBuilder sb = new StringBuilder();
+        while ((c=in.read()) != -1){
+            sb.append((char)c);
+        }
+        System.out.println(sb.toString());
+        //3.分割文件内容
+        String[] lines = sb.toString().split("\r\n"); //将读取出的文件内容按回车、换行分割放入lines里
+        for(String line : lines){
+            String[] kv = line.split(":"); //从lines里读取每一个line按“：”进行分割再放入kv里
+            // System.out.println(kv[0]+"--"+kv[1]); //每次按“：”分割后的第一个和第二个之间用“--”连接
+            // Field field = clazz.getDeclaredField(kv[0]); //根据属性名kv[0]的内容来获取属性field
+            // field.setAccessible(true); //解除属性的保护
+            // field.set(student,kv[1]); //给实例student的属性field赋值kv[1]
+            String fieldName = kv[0].substring(0,1).toUpperCase()+kv[0].substring(1); //将属性名首字母大写并连接首字母后面的字母
+            Method method = clazz.getDeclareMethod("set"+fieldName,String.class);
+            method.invoke(student,kv[1]); //执行实例student里的setfieldName方法并赋值kv[1]
+        }
+			System.out.println(student.toString());
+	}
+}
+</code></pre>
+<br>
+<h1>28.注解</h1>
+<ol>
+<li>
+<p>注解/元数据，是JDK1.5之后的一个特性，与类、接口、枚举在同一个层次，且可以声明在包、类、字段、方法、局部变量、方法参数等前面，对这些元素进行说明</p>
+</li>
+<li>
+<p>作用：</p>
+<p>①编写文档：用代码里标识的元数据生成文档</p>
+<p>②代码分析：用代码里标识的元数据对代码进行分析</p>
+<p>③编译检查：用代码里标识的元数据让编译器实现编译检查</p>
+</li>
+<li>
+<p>自定义注解：</p>
+<p>①元注解控制注解的行为：</p>
+<pre><code class="language-java">@Target(ElementType.METHOD) //注解只标记在方法上
+/*
+作用域(ElementType)	标记位置
+TYPE				  类、接口、枚举
+METHOD				  方法
+FIELD				  字段(包括枚举类常量)
+PARAMETER			  方法参数
+CONSTRUCTOR			  构造器
+LOCAL_VARIABLE		  局部变量(编译后不保留)
+ANNOTATION_TYPE		  其他注解
+PACKAGE				  包声明(需在package-info,java)
+*/
+@Retention(RetentionPolicy.RUNTIME) //运行时保留
+@Documented //包含在Javadoc中
+</code></pre>
+<p>②注解体：</p>
+<pre><code class="language-java">@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface MyAnnotation{
+    //定义属性：类比接口中的方法需要实现，该属性也需要赋值；属性类型只能是基本数据类型、枚举、String、Class、其他注解或者它们的数组；若整个注解只有一个属性，则赋值时可省略其属性名
+    // String value(); //必须赋值的属性
+    String value() default "";
+    int priority() default 1; //带默认值的属性
+}
+</code></pre>
+<pre><code class="language-java">@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Logger{
+    String value() default "log";
+    String level() default "INFO";
+}
+</code></pre>
+<pre><code class="language-java">@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ExceptionHandler{
+    String value() default "error";
+    String message() default "内部错误";
+}
+</code></pre>
+<pre><code class="language-java">@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface NotNull{
+    String message() default "字段不能为空";
+}
+</code></pre>
+<p>③注解体的实现(通过反射)：</p>
+<pre><code class="language-java">public class User{
+    @NotNull(message = "用户名不能为空")
+    private String username;
+    @NotNull(message = "昵称不能为空")
+    private String nickName;
+	//空值检查，@NotNull注解的实现
+	@ExceptionHandler(value = "warring",message = "数据检查异常")
+	public void validate() throws Exception{
+    	//遍历所有字段
+    	for(Field field : this.getClass().getDeclaredField()){
+        	if(field.isAnnotationPresent(NotNull.class)){ //判断字段上是否有@NotNull注解，若有则进行空值检查
+            	field.setAccessible(true);
+            	//判断字段是否为空值
+            	if(field.get(this) == null){
+                	NotNull notNull = field.getAnnotation(NotNull.class);
+                	throw new Exception(notNull.message());
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<br>
+<h1>29.Stream流</h1>
+<ol>
+<li>
+<p>Stream是处理集合的关键抽象概念，能执行复杂的查找(替代遍历)、过滤、映射数据等，其提供的API能对集合数据操作，类似SQL查询数据库</p>
+</li>
+<li>
+<p>特点：</p>
+<ul>
+<li>不是数据结构，不会保存数据</li>
+<li>不会修改原来的数据，而是将数据保存到另一个对象</li>
+<li>惰性求值(懒加载)，只对操作进行记录，不会立即执行，要等到执行终止操作时才会进行实际的计算</li>
+</ul>
+</li>
+<li>
+<p>创建流</p>
+<p>①用Collection下的<code>stream()</code>和<code>parallelStream()</code>方法将<strong>集合</strong>转换成流</p>
+<pre><code class="language-java">List&lt;String&gt; list = new ArrayList();
+Stream&lt;String&gt; stream = list.stream(); //获取一个顺序流
+Stream&lt;String&gt; parallelStream = list.parallelStream(); //获取一个并行流
+</code></pre>
+<p>②用Arrays中的<code>stream()</code>方法，将<strong>数组</strong>转换成流</p>
+<pre><code class="language-java">Integer[] nums = new Integer[10];
+Stream&lt;Integer&gt; stream = Arrays.stream(nums);
+</code></pre>
+<p>③用Stream中的静态方法<code>of()</code>、<code>iterate()</code>、<code>generate()</code>创建流</p>
+<pre><code class="language-java">Stream&lt;Integer&gt; stream1 = Stream.of(1,2,3,4,5,6); //将of()里的内容转换成流对象
+Stream&lt;Integer&gt; stream2 = Stream.iterate(0,(x)-&gt;x+2).limit(6); //从0开始，每个元素+2迭代，截取6个元素
+stream2.forEach(System.out::println); //遍历打印stream2中的元素0,2,4,6,8,10
+Stream&lt;Double&gt; stream3 = Stream.generate(Math::random).limit(2); //生成随机数流对象，截取2个元素
+Stream3.forEach(System.out::println);
+</code></pre>
+<p>④用BufferedReader下的<code>lines()</code>方法，将<strong>文件</strong>每行内容转换成流</p>
+<pre><code class="language-java">BufferedReader reader = new BufferedReader(new FileReader("D:\\test\\test.txt"));
+Stream&lt;String&gt; lineStream = reader.lines();
+lineStream.forEach(System.out::println);
+</code></pre>
+<p>⑤用Pattern(正则表达式)下的<code>splitAsStream()</code>方法，将<strong>字符串</strong>分割成流</p>
+<pre><code class="language-java">Pattern pattern = Pattern.compile(","); //创建一个","的正则表达式模式
+Stream&lt;String&gt; stringStream = pattern.splitaAsStream("a,b,c"); //传入("a,b,c")并按正则表达式模式来分割字符串，返回一个Stream&lt;String&gt;类型数据
+stringStream.forEach(System.out::println); //a b c
+</code></pre>
+</li>
+<li>
+<p>方法链</p>
+<p>一种编程技术，基本思想是一个方法调用后立即调用另一个方法，将多个方法链在一起</p>
+<pre><code class="language-java">//正常写法
+Stream&lt;Integer&gt; stream2 = Stream.iterate(0,(x)-&gt;x+2).limit(6); 
+stream2.forEach(System.out::println); 
+//方法链写法
+Stream.iterate(0,(x)-&gt;x+2).limit(6).forEach(System.out::println); 
+</code></pre>
+</li>
+<li>
+<p>操作流 Stream API</p>
+<p>①筛选与切片</p>
+<ul>
+<li>filter：过滤流中的某些元素</li>
+<li>limit(n)：截取前n个元素</li>
+<li>skip(n)：跳过前n个元素，配合<code>limit(n)</code>实现分页</li>
+<li>distinct：用流中元素的<code>hashCode()</code>和<code>equals()</code>去除重复元素</li>
+</ul>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+        //创建集合
+		List&lt;Integer&gt; list = List.of(6,4,6.7,3,9,8,10);
+        //将集合转换成流，再筛选其中x&gt;5的元素(过滤x&lt;5的元素)，再遍历打印
+        list.stream().filter(x-&gt;x&gt;5).forEach(System.out::println);
+		
+        Stream&lt;Integer&gt; stream = Stream.of(6,4,6,7,9,8,10,12,14,14);
+        Stream&lt;Integer&gt; newStream = Stream.filter(s-&gt;s&gt;5) //6 6 7 9 8 10 12 14 14
+            .distinct() //去重，6 7 9 8 10 12 14
+            .skip(2) //跳过前两个元素，9 8 10 12 14
+            .limit(2) //截取前两个元素，9 8
+        newStream.forEach(System.out::println); //9 8    
+	}
+}
+</code></pre>
+<p>②映射：对流里的每一个元素进行处理</p>
+<ul>
+<li>map：接收一个函数作为参数，该函数会被应用到每一个元素上，并将其映射成一个<strong>新的元素</strong>，可用于数据类型转换(一进一出)</li>
+<li>flatMap：接收一个函数作为参数，将流中的每一个值替换成另一个流，然后把所有流连接成一个流(一进多出)</li>
+</ul>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+		List&lt;String&gt; list = Arrays.asList("a,b,c","10,20,30");
+		//将每个元素转换成一个新的且不带逗号的元素，一进一出
+        Stream&lt;String&gt; s1 = list.stream().map(s-&gt;s.replaceAll(",","")); //replaceAll方法替换所有
+		s1.forEach(System.out::println); //abc 102030，list里两个出来两个
+        //将逗号分隔的每个数据打印出来，一进多出
+        Stream&lt;String&gt; s3 = list.stream().flatMap(s-&gt;{
+            //将每个元素转换成一个stream
+            String[] split = s.split(","); //[a,b,c] [10,20,30]
+            Stream&lt;String&gt; s2 = Arrays.stream(split);
+            return s2; //a b c 10 20 30，list里两个，分割出来六个
+        });
+	}
+}
+</code></pre>
+</li>
+<li>
+<p>排序</p>
+<ul>
+<li>sorted()：自然排序，流中元素需实现Comparable接口</li>
+<li>sorted(Comparator com)：定制排序，自定义Comparator比较器</li>
+</ul>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+        //自然排序
+		List&lt;String&gt; list = Arrays.asList("aa","ff","dd");
+        //String类自身已经实现Comparable接口
+        list.stream().sorted().forEach(System.out::println);
+        //定制排序
+		List&lt;Sku&gt; skus = new ArrayList&lt;&gt;();
+        skus.add(new Sku("A",100,200.0));
+        skus.add(new Sku("C",50,1200.0));
+        skus.add(new Sku("D",150,120.0));
+        skus.add(new Sku("B",200,1000.0));
+        //先按价格降序，价格相同则数量升序
+        skus.stream().sorted(
+        	(o1,o2)-&gt;{
+                if(o2.getPrice() - o1.getPrice() == 0){
+                    return o2.getNum() - o1.getNum();
+                }
+                return (int)(o2.getPrice() - o1.getPrice());
+            }
+        ).forEach(System.out::println);
+	}
+}
+</code></pre>
+</li>
+<li>
+<p>消费</p>
+<p>peek：得到流中的每一个元素，且能修改元素的值，但生成还是一个新的对象</p>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+        //定制排序
+		List&lt;Sku&gt; skus = new ArrayList&lt;&gt;();
+        skus.add(new Sku("A",100,200.0));
+        skus.add(new Sku("C",50,1200.0));
+        skus.add(new Sku("D",150,120.0));
+        skus.add(new Sku("B",200,1000.0));
+        //先按价格降序，价格相同则数量升序
+        skus.stream().sorted(
+        	(o1,o2)-&gt;{
+                if(o2.getPrice() - o1.getPrice() == 0){
+                    return o2.getNum() - o1.getNum();
+                }
+                return (int)(o2.getPrice() - o1.getPrice());
+            }
+        ).forEach(System.out::println);
+        //将数量&gt;=150的商品降价10%
+        skus.stream().filter(e -&gt; e.getNum() &gt;= 150)
+            .peek(e -&gt; e.setPirce(e.getPrice()*(1-0.1)))
+            .forEach(System.out::println);
+        //生成订单集合，订单：商品名称、数量、价格、金额
+        skus.stream().map(sku-&gt;{
+            double amount = sku.getNum()*sku.getPrice();
+            Order order = new Order(
+            	sku.getName(),
+                sku.getNum(),
+                sku.getPrice(),
+                amount
+            );
+            return order;
+        }).forEach(System.out::println);
+	}
+}
+</code></pre>
+</li>
+<li>
+<p>匹配、聚合</p>
+<ul>
+<li>allMatch</li>
+<li>noneMatch</li>
+<li>anyMatch</li>
+<li>findFirst</li>
+<li>findAny</li>
+<li>count</li>
+<li>max</li>
+<li>min</li>
+</ul>
+</li>
+<li>
+<p>规约</p>
+<ul>
+<li><code>Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; accumulator)</code>：第一次执行时，accumulator函数的第一个参数为流中的第一个元素，第二个参数为流中的第二个元素；第二次执行时，第一个参数为第一次函数执行的结构，第二个参数为流中的第三个元素；依此类推</li>
+</ul>
+<pre><code class="language-java">public class demo{
+    public static void main(String args[]){
+		List&lt;Integer&gt; list = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        Integer v = list.stream().reduce((x1,x2)-&gt;x1+x2).get(); //1+2=3--&gt;3+3=6...
+        System.out.println(v); //55
+	}
+}
+</code></pre>
+<ul>
+<li><code>T reduce(T identity, BinaryOperator&lt;T&gt; accumulator)</code></li>
+<li><code>&lt;U&gt; U reduce(U identity, BiFunction&lt;U,? super T,U&gt; accumulator,BinaryOperator&lt;U&gt; combiner)</code></li>
+</ul>
+<hr>
+</li>
+<li>
+<p>收集</p>
+</li>
+</ol>
+<ul>
+<li>collect：接收一个Collector实例，将流中元素收集成另一个数据结构，以<strong>二次利用</strong></li>
+</ul>
+<pre><code class="language-java">public class demo{
+ public static void main(String args[]){
+     //定制排序
+   List&lt;Sku&gt; skus = new ArrayList&lt;&gt;();
+     skus.add(new Sku("A",100,200.0));
+     skus.add(new Sku("C",50,1200.0));
+     skus.add(new Sku("D",150,120.0));
+     skus.add(new Sku("B",200,1000.0));
+     
+     //先按价格降序，价格相同则数量升序
+     skus.stream().sorted(
+     	(o1,o2)-&gt;{
+             if(o2.getPrice() - o1.getPrice() == 0){
+                 return o2.getNum() - o1.getNum();
+             }
+             return (int)(o2.getPrice() - o1.getPrice());
+         }
+     ).forEach(System.out::println);
+     
+     //生成订单集合，订单：商品名称、数量、价格、金额
+     List&lt;Order&gt; orders = skus.stream().map(sku-&gt;{
+         double amount = sku.getNum()*sku.getPrice();
+         Order order = new Order(
+         	sku.getName(),
+             sku.getNum(),
+             sku.getPrice(),
+             amount
+         );
+         return order;
+     }).collect(Collectors.toList()); //收集商品集合，转换成订单集合，以对订单进行二次计算
+     orders.forEach(System.out::println); //再打印
+     
+     //将数量&gt;=150的商品降价10%
+     List&lt;Sku&gt; sku1 = skus.stream().filter(e -&gt; e.getNum() &gt;= 150)
+         .peek(e -&gt; e.setPirce(e.getPrice()*(1-0.1)))
+         .collect(Collectors.toList()); //收集所有降价的商品成一个变量sku1，以用于二次计算
+     	sku1.forEach(System.out::println); //再打印
+}
+}
+</code></pre>
+<ol start="11">
+<li>
+<p>Optional类</p>
+<p>​	在Stream API中，有很多方法如max、min、reduce，返回值是Optional；</p>
+<p>​	在Java中尝试访问空引用的属性调用空引用的方法是会报空指针异常，因此项目中会有很多条件判空，较为冗杂，所以Optional类引入了一种显式的方式来处理可能为空的对象，强制在可能为空的情况下进行显示;</p>
+<p>​	Optional类似容器，可以包含各种类型的值，也可以是null，Optional类提供了许多方法以方便操作内部的值，常用的如get、orElse、orElseGet、orElseThrow等</p>
+<p>​</p>
+<p>①构建Optional对象</p>
+<ul>
+<li>empty()：构建一个空的Optional对象</li>
+<li>of(T value)：构建一个非空的Optional对象，如果为空则报错</li>
+<li>ofNullable(T value)：构建一个Optional对象，允许为空</li>
+</ul>
+<hr>
+<pre><code class="language-java">//1.构建一个空的Optional对象
+Optional&lt;Object&gt; empty = Optional.empty();
+Optional&lt;Object&gt; ob = Optional.ofNullable(null);
+//2.构建一个非空的Optional对象
+Optional&lt;Object&gt; oa = Optional.of("123");
+Optional&lt;Object&gt; oc = Optional.ofNullable("123");
+</code></pre>
+<hr>
+<p>②访问Optional的值</p>
+<ul>
+<li>get()：取值，若取值对象为null，则报异常</li>
+<li>orElse()：用于获取值或者在值为空的情况下提供一个默认值</li>
+<li>orElseGet()：提供默认值的工厂</li>
+<li>orElseThrow()：用于Optional对象中的值为空时抛出一个指定的异常</li>
+</ul>
+<pre><code class="language-java">Sku sku = null;
+Optional&lt;Sku&gt; op = Optional.ofNullable(sku);
+// String name = op.get().getName(); //异常
+
+String name1 = op.orElse(new Sku("A",100,200.0)).getName();
+System.out.println(name1); //A
+
+String name2 = op.orElseGet(()-&gt;new Sku("B",100,200.0)).getName();
+System.out.println(name2); //B
+
+op.orElseThrow(()-&gt;new Exception("对象为空")).getName();
+String name = op.get().getName(); //抛出"对象为空"异常
+</code></pre>
+<p>③空检查</p>
+<br>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
 <br>
 <center><font color="FF3E96">希</font><font color="FF69B4">望</font><font color="FF7F00">这</font><font color="FF82AB">篇</font><font color="FFA07A">文</font><font color="FFB5C5">章</font><font color="FFBBFF">对</font><font color="FFC125">你</font><font color="FFA54F">有</font><font color="FF8C00">帮</font><font color="FF6347">助</font> 🥰</center>
     </div>
@@ -488,7 +2225,7 @@ public class ScanTest{
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2024 Alita
+            2022 - 2025 Alita
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

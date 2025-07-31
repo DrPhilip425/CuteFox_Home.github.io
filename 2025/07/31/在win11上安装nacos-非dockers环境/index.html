@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>在win11上安装nacos(非dockers环境) | Alita</title>
+        <meta name="author" content="DrPhilip425" />
+        <meta name="description" content="The website is my first static blog,thanks for browsing." />
+        <meta name="keywords" content="Java" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/CuteFox_Home.github.io/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/CuteFox_Home.github.io/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/CuteFox_Home.github.io/js/lib/highlight.js"></script>
+
+
+
+<script src="/CuteFox_Home.github.io/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/CuteFox_Home.github.io/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/CuteFox_Home.github.io/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/CuteFox_Home.github.io/">
+            <span>ALITA</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/CuteFox_Home.github.io/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;ALITA</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/CuteFox_Home.github.io/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/CuteFox_Home.github.io/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div class="article">
+    <div>
+        <h1>在win11上安装nacos(非dockers环境)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/7/31
+        </span>
+        
+        <span class="category">
+            <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                教程
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/CuteFox_Home.github.io/tags/Nacos/" style="color: #03a9f4">Nacos</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/CuteFox_Home.github.io/tags/MySQL/" style="color: #ffa2c4">MySQL</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1>1.确认版本</h1>
+<p>本教程使用的是<strong>2.4.3</strong>版本</p>
+<h1>2.查询本地IP</h1>
+<pre><code class="language-shell">ipconfig
+</code></pre>
+<p>找到本机IP：<a target="_blank" rel="noopener" href="http://192.168.xxx.xxx">192.168.xxx.xxx</a>，记下来</p>
+<h1>3.解压nacos.zip</h1>
+<h1>4.改properties文件</h1>
+<p>找到<code>D:\nacos\conf\application.properties</code></p>
+<p>①第30行</p>
+<pre><code class="language-properties">### Specify local server's IP:
+# nacos.inetutils.ip-address=
+</code></pre>
+<p>改为</p>
+<pre><code class="language-properties">### Specify local server's IP:
+ nacos.inetutils.ip-address=192.168.xxx.xxx
+</code></pre>
+<hr>
+<p>②第39行</p>
+<pre><code class="language-properties">### Count of DB:
+# db.num=1
+</code></pre>
+<p>改为</p>
+<pre><code class="language-properties">### Count of DB:
+ db.num=1
+</code></pre>
+<hr>
+<p>③第42行</p>
+<pre><code class="language-properties">### Connect URL of DB:
+ db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useUnicode=true&amp;useSSL=false&amp;serverTimezone=UTC
+ db.user.0=nacos
+ db.password.0=nacos
+</code></pre>
+<p>自行更改nacos所在的数据库配置信息</p>
+<pre><code class="language-properties">### Connect URL of DB:
+ db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useUnicode=true&amp;useSSL=false&amp;serverTimezone=UTC
+ db.user.0=root
+ db.password.0=root
+</code></pre>
+<hr>
+<p>④第162行</p>
+<pre><code class="language-properties">### The default token (Base64 String):
+nacos.core.auth.plugin.nacos.token.secret.key=
+</code></pre>
+<p>自行填充任意基于base64加密的大于等于32位数的密钥key</p>
+<pre><code class="language-properties">### The default token (Base64 String):
+nacos.core.auth.plugin.nacos.token.secret.key=MTIzNDU2Nzg5MTIzNDU2Nzg5MTIzNDU2Nzg5MTIzNDU2Nzg5
+</code></pre>
+<hr>
+<p>⑤确保8848端口</p>
+<pre><code class="language-properties">### Default web context path:
+server.servlet.contextPath=/nacos
+### Include message field
+server.error.include-message=ALWAYS
+### Default web server port:
+server.port=8848
+</code></pre>
+<h1>5.改启动和关闭程序</h1>
+<p>找到<code>D:\nacos\bin\startup.cmd</code>和<code>D:\nacos\bin\shutdown.cmd</code></p>
+<p>右键用文本编辑打开<strong>cmd</strong>文件，添加<strong>Java</strong><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>路径</p>
+<pre><code class="language-cmd">set JAVA_HOME="D:\java\jdk-17.0.15+6"
+</code></pre>
+<p>到下面这段代码的上面</p>
+<pre><code class="language-cmd">if not exist "%JAVA_HOME%\bin\java.exe" echo Please set the JAVA_HOME variable in your environment, We need java(x64)! jdk8 or later is better! &amp; EXIT /B 1
+set "JAVA=%JAVA_HOME%\bin\java.exe"
+</code></pre>
+<h1>6.创建nacos数据库</h1>
+<p>在MySQL中新建nacos数据库，新建查询并运行<code> D:\nacos\conf\mysql-schema.sql</code>(即下文)</p>
+<pre><code class="language-mysql">/*
+ * Copyright 1999-2018 Alibaba Group Holding Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/******************************************/
+/*   表名称 = config_info                  */
+/******************************************/
+CREATE TABLE `config_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(128) DEFAULT NULL COMMENT 'group_id',
+  `content` longtext NOT NULL COMMENT 'content',
+  `md5` varchar(32) DEFAULT NULL COMMENT 'md5',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `src_user` text COMMENT 'source user',
+  `src_ip` varchar(50) DEFAULT NULL COMMENT 'source ip',
+  `app_name` varchar(128) DEFAULT NULL COMMENT 'app_name',
+  `tenant_id` varchar(128) DEFAULT '' COMMENT '租户字段',
+  `c_desc` varchar(256) DEFAULT NULL COMMENT 'configuration description',
+  `c_use` varchar(64) DEFAULT NULL COMMENT 'configuration usage',
+  `effect` varchar(64) DEFAULT NULL COMMENT '配置生效的描述',
+  `type` varchar(64) DEFAULT NULL COMMENT '配置的类型',
+  `c_schema` text COMMENT '配置的模式',
+  `encrypted_data_key` varchar(1024) NOT NULL DEFAULT '' COMMENT '密钥',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_configinfo_datagrouptenant` (`data_id`,`group_id`,`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='config_info';
+
+/******************************************/
+/*   表名称 = config_info_aggr             */
+/******************************************/
+CREATE TABLE `config_info_aggr` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(128) NOT NULL COMMENT 'group_id',
+  `datum_id` varchar(255) NOT NULL COMMENT 'datum_id',
+  `content` longtext NOT NULL COMMENT '内容',
+  `gmt_modified` datetime NOT NULL COMMENT '修改时间',
+  `app_name` varchar(128) DEFAULT NULL COMMENT 'app_name',
+  `tenant_id` varchar(128) DEFAULT '' COMMENT '租户字段',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_configinfoaggr_datagrouptenantdatum` (`data_id`,`group_id`,`tenant_id`,`datum_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='增加租户字段';
+
+
+/******************************************/
+/*   表名称 = config_info_beta             */
+/******************************************/
+CREATE TABLE `config_info_beta` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(128) NOT NULL COMMENT 'group_id',
+  `app_name` varchar(128) DEFAULT NULL COMMENT 'app_name',
+  `content` longtext NOT NULL COMMENT 'content',
+  `beta_ips` varchar(1024) DEFAULT NULL COMMENT 'betaIps',
+  `md5` varchar(32) DEFAULT NULL COMMENT 'md5',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `src_user` text COMMENT 'source user',
+  `src_ip` varchar(50) DEFAULT NULL COMMENT 'source ip',
+  `tenant_id` varchar(128) DEFAULT '' COMMENT '租户字段',
+  `encrypted_data_key` varchar(1024) NOT NULL DEFAULT '' COMMENT '密钥',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_configinfobeta_datagrouptenant` (`data_id`,`group_id`,`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='config_info_beta';
+
+/******************************************/
+/*   表名称 = config_info_tag              */
+/******************************************/
+CREATE TABLE `config_info_tag` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(128) NOT NULL COMMENT 'group_id',
+  `tenant_id` varchar(128) DEFAULT '' COMMENT 'tenant_id',
+  `tag_id` varchar(128) NOT NULL COMMENT 'tag_id',
+  `app_name` varchar(128) DEFAULT NULL COMMENT 'app_name',
+  `content` longtext NOT NULL COMMENT 'content',
+  `md5` varchar(32) DEFAULT NULL COMMENT 'md5',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `src_user` text COMMENT 'source user',
+  `src_ip` varchar(50) DEFAULT NULL COMMENT 'source ip',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_configinfotag_datagrouptenanttag` (`data_id`,`group_id`,`tenant_id`,`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='config_info_tag';
+
+/******************************************/
+/*   表名称 = config_tags_relation         */
+/******************************************/
+CREATE TABLE `config_tags_relation` (
+  `id` bigint(20) NOT NULL COMMENT 'id',
+  `tag_name` varchar(128) NOT NULL COMMENT 'tag_name',
+  `tag_type` varchar(64) DEFAULT NULL COMMENT 'tag_type',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(128) NOT NULL COMMENT 'group_id',
+  `tenant_id` varchar(128) DEFAULT '' COMMENT 'tenant_id',
+  `nid` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'nid, 自增长标识',
+  PRIMARY KEY (`nid`),
+  UNIQUE KEY `uk_configtagrelation_configidtag` (`id`,`tag_name`,`tag_type`),
+  KEY `idx_tenant_id` (`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='config_tag_relation';
+
+/******************************************/
+/*   表名称 = group_capacity               */
+/******************************************/
+CREATE TABLE `group_capacity` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `group_id` varchar(128) NOT NULL DEFAULT '' COMMENT 'Group ID，空字符表示整个集群',
+  `quota` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '配额，0表示使用默认值',
+  `usage` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '使用量',
+  `max_size` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '单个配置大小上限，单位为字节，0表示使用默认值',
+  `max_aggr_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '聚合子配置最大个数，，0表示使用默认值',
+  `max_aggr_size` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '单个聚合数据的子配置大小上限，单位为字节，0表示使用默认值',
+  `max_history_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最大变更历史数量',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_group_id` (`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='集群、各Group容量信息表';
+
+/******************************************/
+/*   表名称 = his_config_info              */
+/******************************************/
+CREATE TABLE `his_config_info` (
+  `id` bigint(20) unsigned NOT NULL COMMENT 'id',
+  `nid` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'nid, 自增标识',
+  `data_id` varchar(255) NOT NULL COMMENT 'data_id',
+  `group_id` varchar(128) NOT NULL COMMENT 'group_id',
+  `app_name` varchar(128) DEFAULT NULL COMMENT 'app_name',
+  `content` longtext NOT NULL COMMENT 'content',
+  `md5` varchar(32) DEFAULT NULL COMMENT 'md5',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `src_user` text COMMENT 'source user',
+  `src_ip` varchar(50) DEFAULT NULL COMMENT 'source ip',
+  `op_type` char(10) DEFAULT NULL COMMENT 'operation type',
+  `tenant_id` varchar(128) DEFAULT '' COMMENT '租户字段',
+   `encrypted_data_key` varchar(1024) NOT NULL DEFAULT '' COMMENT '密钥',
+  PRIMARY KEY (`nid`),
+  KEY `idx_gmt_create` (`gmt_create`),
+  KEY `idx_gmt_modified` (`gmt_modified`),
+  KEY `idx_did` (`data_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='多租户改造';
+
+
+/******************************************/
+/*   表名称 = tenant_capacity              */
+/******************************************/
+CREATE TABLE `tenant_capacity` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `tenant_id` varchar(128) NOT NULL DEFAULT '' COMMENT 'Tenant ID',
+  `quota` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '配额，0表示使用默认值',
+  `usage` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '使用量',
+  `max_size` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '单个配置大小上限，单位为字节，0表示使用默认值',
+  `max_aggr_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '聚合子配置最大个数',
+  `max_aggr_size` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '单个聚合数据的子配置大小上限，单位为字节，0表示使用默认值',
+  `max_history_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最大变更历史数量',
+  `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `gmt_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_tenant_id` (`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='租户容量信息表';
+
+
+CREATE TABLE `tenant_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `kp` varchar(128) NOT NULL COMMENT 'kp',
+  `tenant_id` varchar(128) default '' COMMENT 'tenant_id',
+  `tenant_name` varchar(128) default '' COMMENT 'tenant_name',
+  `tenant_desc` varchar(256) DEFAULT NULL COMMENT 'tenant_desc',
+  `create_source` varchar(32) DEFAULT NULL COMMENT 'create_source',
+  `gmt_create` bigint(20) NOT NULL COMMENT '创建时间',
+  `gmt_modified` bigint(20) NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_tenant_info_kptenantid` (`kp`,`tenant_id`),
+  KEY `idx_tenant_id` (`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='tenant_info';
+
+CREATE TABLE `users` (
+	`username` varchar(50) NOT NULL PRIMARY KEY COMMENT 'username',
+	`password` varchar(500) NOT NULL COMMENT 'password',
+	`enabled` boolean NOT NULL COMMENT 'enabled'
+);
+
+CREATE TABLE `roles` (
+	`username` varchar(50) NOT NULL COMMENT 'username',
+	`role` varchar(50) NOT NULL COMMENT 'role',
+	UNIQUE INDEX `idx_user_role` (`username` ASC, `role` ASC) USING BTREE
+);
+
+CREATE TABLE `permissions` (
+    `role` varchar(50) NOT NULL COMMENT 'role',
+    `resource` varchar(128) NOT NULL COMMENT 'resource',
+    `action` varchar(8) NOT NULL COMMENT 'action',
+    UNIQUE INDEX `uk_role_permission` (`role`,`resource`,`action`) USING BTREE
+);
+
+
+</code></pre>
+<h1>7.启动单例模式</h1>
+<p>在<code>D:\nacos\bin</code>中打开 <strong>cmd</strong></p>
+<pre><code class="language-cmd">startup.cmd -m standalone
+</code></pre>
+<h1>8.在IDEA中改配置，注意格式不能错</h1>
+<p>1.给父类<code>pom.xml</code>文件添加依赖</p>
+<pre><code class="language-xml">        &lt;!-- 注册中心 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-discovery&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>2.在<code>application.yml</code>中配置nacos服务地址</p>
+<pre><code class="language-yaml">  # 注册中心服务器地址
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+</code></pre>
+<h2 id="9-建议">9.建议</h2>
+<p>把IDEA该路径<code>D:..\.IntelliJIdea\system</code>文件夹和编写的Java代码文件夹加入Microsoft Defender排除项</p>
+<br>
+<center><font color="FF3E96">希</font><font color="FF69B4">望</font><font color="FF7F00">这</font><font color="FF82AB">篇</font><font color="FFA07A">文</font><font color="FFB5C5">章</font><font color="FFBBFF">对</font><font color="FFC125">你</font><font color="FFA54F">有</font><font color="FF8C00">帮</font><font color="FF6347">助</font> 🥰</center>
+<br>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>建议jdk8以上 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Alita
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;DrPhilip425
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+    <div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("08/06/2023 00:00:00");//在此处修改你的建站时间
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
+    </div>
+    <div class="busuanzi-count">
+        <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span class="site-uv">
+          <i class="fa fa-user"></i>
+          总访客 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+          <span class="post-meta-divider"> | </span>
+        </span>
+        <span class="site-uv">
+          <i class="fa fa-eye"></i>
+          访问量 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </div>  
+</footer>
+
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/CuteFox_Home.github.io/js/main.js"></script>
+        
+        
+<script
+    src="https://giscus.app/client.js"
+    data-repo="DrPhilip425/comment"
+    data-repo-id="R_kgDOKG8-OA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKG8-OM4CYmCp"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+        
+    <p style="text-align:center" id="saintwei"></p>
+        <script>
+           var saintwei = function (r) {
+               function t() {
+                   return b[Math.floor(Math.random() * b.length)]
+               }
+               function e() {
+                   return String.fromCharCode(94 * Math.random() + 33)
+               }
+               function n(r) {
+                   for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                       var l = document.createElement("span");
+                       l.textContent = e(), l.style.color = t(), n.appendChild(l)
+                   }
+                   return n
+               }
+               function i() {
+                   var t = o[c.skillI];
+                   c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+               }
+               var l = " ",
+                   o = ["Welcome to CuteFox'Home", "夜风是她的车辇，星辰是她的舞伴", "寻找的过程是无价的，而找到答案以后，人们便只会歌颂答案", "Are You Ready To Fly", "那会是一片索拉里斯之海，一切都会在无序中存续"].map(function (r) {
+                       return r + " "
+                   }),
+                   a = 2,
+                   g = 1,
+                   s = 5,
+                   d = 75,
+                   b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+                   c = {
+                       text: "",
+                       prefixP: -s,
+                       skillI: 0,
+                       skillP: 0,
+                       direction: "forward",
+                       delay: a,
+                       step: g
+                   };
+               i()
+           };
+           saintwei(document.getElementById('saintwei'));
+        </script>
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="https://static-argvchs.netlify.app/js/fireworks.min.js"></script>
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="https://static-argvchs.netlify.app/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="https://static-argvchs.netlify.app/css/cursor.min.css" />
+<script src="https://static-argvchs.netlify.app/js/cursor.min.js"></script>
+<script type="text/javascript">
+    var OriginTitile=document.title,st;
+	document.addEventListener("visibilitychange",function(){
+        document.hidden?(document.title="o(இ௰இ)怎么就走了！",clearTimeout(st)):(document.title="☆*o(≧▽≦)o*☆欢迎回来！",st=setTimeout(function(){document.title=OriginTitile},3e3))
+    })
+</script>
+    <script src="/CuteFox_Home.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/CuteFox_Home.github.io/live2dw/assets/assets/hibiki.model.json"},"display":{"position":"right","width":135,"height":316,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body>
+</html>

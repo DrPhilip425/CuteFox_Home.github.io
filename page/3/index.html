@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>Tags: 数据库 | Alita</title>
+        <title>Alita</title>
         <meta name="author" content="DrPhilip425" />
         <meta name="description" content="The website is my first static blog,thanks for browsing." />
         <meta name="keywords" content="Java" />
@@ -32,6 +32,8 @@
 
 
 
+
+<script src="/CuteFox_Home.github.io/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/CuteFox_Home.github.io/css/main.css" />
 
@@ -143,329 +145,191 @@
 </transition>
 
             <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-                <div id="archives">
-    
-    <div class="categories-tags">
+                <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-images="/CuteFox_Home.github.io/images/background.jpg"></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Alita</h1>
+                <h3>Welcome to CuteFox_Home!</h3>
+                <h5>The website is my first static blog,thanks for browsing.</h5>
+            </div>
+        </span>
+    </div>
+</div>
+<div id="home-posts-wrap" true ref="homePostsWrap">
+    <div id="home-posts">
         
+
+<div class="post">
+    <a href="/CuteFox_Home.github.io/2023/08/05/%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+        <h2 class="post-title">用Hexo+Github搭建一个自己的博客</h2>
+    </a>
+    <div class="category-and-date">
         
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Android/" style="background: #ffa2c4">
+        <span class="category">
+            <a href="/CuteFox_Home.github.io/categories/%E6%95%99%E7%A8%8B/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Android
+                教程
             </a>
         </span>
         
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Termux/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Termux
-            </a>
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/5
         </span>
         
         
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Aria2/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Aria2
-            </a>
+        <span class="special">
+            <i class="fa-solid fa-grip-vertical fa-fw"></i>
         </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/cpolar/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                cpolar
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                内网穿透
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Kali-Nethunter/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Kali-Nethunter
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Ubuntu/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Ubuntu
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E7%94%B5%E8%84%91SSH%E8%BF%9C%E7%A8%8B%E6%89%8B%E6%9C%BA/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                电脑SSH远程手机
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/C-%E8%AF%AD%E8%A8%80/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                C++语言
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Hexo/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Hexo
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E5%BD%A9%E8%89%B2%E6%BB%9A%E5%8A%A8%E6%96%87%E5%AD%97/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                彩色滚动文字
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E8%84%9A%E6%B3%A8/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                脚注
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/emoji%E8%A1%A8%E6%83%85/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                emoji表情
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E7%BD%91%E7%AB%99%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                网站运行时间统计
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                访问量统计
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E6%80%BB%E8%AE%BF%E5%AE%A2%E6%95%B0%E7%BB%9F%E8%AE%A1/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                总访客数统计
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E6%A0%87%E9%A2%98%E6%90%9E%E6%80%AA%E7%89%B9%E6%95%88/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                标题搞怪特效
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Nacos/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Nacos
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/MySQL/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                MySQL
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                数据库
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/C%E8%AF%AD%E8%A8%80/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                C语言
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                仅适用于Windows
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Java%E8%AF%AD%E8%A8%80/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Java语言
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/Aplayer/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Aplayer
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/CuteFox_Home.github.io/tags/VMware/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                VMware
-            </a>
-        </span>
-        
         
     </div>
-    
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/9/9</div>
-            <a href="/CuteFox_Home.github.io/2023/09/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
-                <h3>数据库知识总结</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/CuteFox_Home.github.io/categories/%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        知识汇总
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/MySQL/" style="color: #03a9f4">MySQL</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/CuteFox_Home.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="color: #ffa2c4">数据库</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p><strong>具体教程</strong>可以参照官网 <em>Hexo</em></p>
+
+            
         </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/CuteFox_Home.github.io/tags/Hexo/" style="color: #ff7d73">Hexo</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/CuteFox_Home.github.io/tags/%E4%BB%85%E9%80%82%E7%94%A8%E4%BA%8EWindows/" style="color: #ffa2c4">仅适用于Windows</a>
+        </span>
+        
+    </div>
+    <a href="/CuteFox_Home.github.io/2023/08/05/%E7%94%A8Hexo-Github%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" class="go-post">阅读全文</a>
+</div>
+
+
+        <div class="page-current">
+    <div class="prev">
+        
+        <a class="page-num" href="/CuteFox_Home.github.io/page/2/">
+            <i class="fa-solid fa-caret-left fa-fw"></i>
+        </a>
+        
+    </div>
+    <div class="page-index">
+        
+        <span>
+            
+            
+            
+            <a class="page-num" href="/CuteFox_Home.github.io/">1</a>
+            
+            
+            
+            <a class="page-num" href="/CuteFox_Home.github.io/page/2/">2</a>
+        </span>
+        
+        <span class="current">3</span>
+        
+    </div>
+    <div class="next">
+        
+    </div>
+</div>
+
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/CuteFox_Home.github.io/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">DrPhilip425</div>
+        <div class="description">
+            <p>一天不涩涩,癫痫发作作<br>
+…</p>
+
+        </div>
+        
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://github.com/DrPhilip425">
+                    <i
+                        class="fa-brands fa-github fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://space.bilibili.com/47134498">
+                    <i
+                        class="fa-brands fa-bilibili fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://www.youtube.com/">
+                    <i
+                        class="fa-brands fa-youtube fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://www.reddit.com/user/Alita-owe">
+                    <i
+                        class="fa-brands fa-reddit fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561199361599635/">
+                    <i
+                        class="fa-brands fa-steam fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://skyblogs.xyz/">凌空的博客小站</a>
+            </div>
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/DrPhilip425/PicGo-PicStore/main/images/76834066.jpg">PicGo-Alita</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+
     </div>
     
 </div>
